@@ -93,13 +93,15 @@ class SynergyWholesale
 		if (empty($data) OR !is_object($data)) throw new SynergyWholesaleResponseException("Empty response received", $this->last_command);
 
 		if (!isset($data->status)) throw new SynergyWholesaleResponseException("No status found in response", $this->last_command);
-		if (!isset($data->statusCode)) throw new SynergyWholesaleResponseException("No status code found in response", $this->last_command);
 
-		if ($data->status != 'OK')
+		if (!empty($data->errorMessage))
 		{
-			if (!isset($data->errorMessage)) throw new SynergyWholesaleResponseException("No error message found in response", $this->last_command);
-
-			throw new SynergyWholesaleErrorException($data->errorMessage, $data->statusCode, $data->status, $this->last_command);
+			throw new SynergyWholesaleErrorException(
+				$data->errorMessage,
+				isset($data->statusCode) ? $data->statusCode : 0,
+				$data->status,
+				$this->last_command
+			);
 		}
 
 		return $data;
