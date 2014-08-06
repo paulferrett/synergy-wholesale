@@ -1,8 +1,8 @@
 <?php namespace Hampel\SynergyWholesale\Commands;
 
-class DomainInfoCommand extends Command
+class CheckDomainCommand extends Command
 {
-	protected $command = 'domainInfo';
+	protected $command = 'checkDomain';
 
 	protected $domainName;
 
