@@ -24,9 +24,8 @@ which provides a simple Laravel service provider and Facade for working with thi
 Usage
 -----
 
-You will need to turn on API access in your Synergy Wholesale control panel, which will tell you your Reseller ID.
-
-You will also need to add the IP address of your web server to the IP whitelist to enable an API key.
+You will need to turn on API access in your Synergy Wholesale control panel, which will tell you your Reseller ID. You
+will also need to add the IP address of your web server to the IP whitelist to enable an API key.
 
 Specify the Reseller ID and API Key as parameters to the SynergyWholesle constructor.
 
@@ -44,7 +43,7 @@ Exceptions are thrown on errors.
 
 	// long-hand initialisation method
 	// start by creating a SoapClient with the location of the WSDL file supplied by Synergy Wholesale
-	$client = new SoapClient(null, array('location => 'https://api.synergywholesale.com/?wsdl', 'uri' => ''));
+	$client = new SoapClient(null, array('location' => 'https://api.synergywholesale.com/?wsdl', 'uri' => ''));
 	$sw = new SynergyWholesale($client, "reseller_id", "api_key");
 
 	// alternative static factory does all the heavy lifting for you
