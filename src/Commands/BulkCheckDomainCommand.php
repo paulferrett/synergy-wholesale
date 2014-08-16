@@ -11,7 +11,7 @@ class BulkCheckDomainCommand extends Command
 		$this->domainList = $domainList;
 	}
 
-	public function build()
+	public function buildRequest()
 	{
 		return array('domainList' => $this->domainList);
 	}

@@ -1,6 +1,6 @@
 <?php namespace Hampel\SynergyWholesale\Exception;
 
-class SynergyWholesaleResponseException extends SynergyWholesaleException
+class BadDataException extends SynergyWholesaleException
 {
 	protected $command;
 

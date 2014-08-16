@@ -11,7 +11,7 @@ class CheckDomainCommand extends Command
 		$this->domainName = $domainName;
 	}
 
-	public function build()
+	public function buildRequest()
 	{
 		return array('domainName' => $this->domainName);
 	}

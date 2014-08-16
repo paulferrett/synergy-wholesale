@@ -1,9 +1,7 @@
 <?php namespace Hampel\SynergyWholesale\Commands;
 
-class DomainInfoCommand extends Command
+class DomainInfoCommand implements CommandInterface
 {
-	protected $command = 'domainInfo';
-
 	protected $domainName;
 
 	public function __construct($domainName)
@@ -11,7 +9,7 @@ class DomainInfoCommand extends Command
 		$this->domainName = $domainName;
 	}
 
-	public function build()
+	public function getRequestData()
 	{
 		return array('domainName' => $this->domainName);
 	}

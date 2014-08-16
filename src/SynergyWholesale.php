@@ -1,11 +1,13 @@
 <?php namespace Hampel\SynergyWholesale;
 
-use Hampel\SynergyWholesale\Exception\SynergyWholesaleSoapException;
-use Hampel\SynergyWholesale\Exception\SynergyWholesaleResponseException;
-use Hampel\SynergyWholesale\Exception\SynergyWholesaleErrorException;
+use stdClass;
 use SoapFault;
 use SoapClient;
+use ReflectionClass;
 use Hampel\SynergyWholesale\Commands\CommandInterface;
+use Hampel\SynergyWholesale\Exception\SoapException;
+use Hampel\SynergyWholesale\Exception\BadDataException;
+use Hampel\SynergyWholesale\Exception\ResponseErrorException;
 
 class SynergyWholesale
 {
@@ -21,27 +23,30 @@ class SynergyWholesale
 	/** @var SoapClient our Soap Client object */
 	protected $client;
 
-	/** @var Response response object representing the last response from SoapClient call to Synergy Wholesale API */
-	protected $last_response;
-
-	protected $last_command;
+	/** @var ResponseGeneratorInterface */
+	protected $responseGenerator;
 
 	/**
 	 * Constructor
 	 *
-	 * @param SoapClient $client	Soap client
-	 * @param string $reseller_id	Reseller id
-	 * @param string $api_key		Synergy Wholesale api key
+	 * @param SoapClient $client							soap client
+	 * @param ResponseGeneratorInterface $responseGenerator	response generator
+	 * @param string $reseller_id 							Synergy Wholesale reseller id
+	 * @param string $api_key								Synergy Wholesale api key
 	 */
-	public function __construct(SoapClient $client, $reseller_id, $api_key)
+	public function __construct(SoapClient $client, ResponseGeneratorInterface $responseGenerator, $reseller_id, $api_key)
 	{
 		$this->client = $client;
+		$this->responseGenerator = $responseGenerator;
 		$this->reseller_id = $reseller_id;
 		$this->api_key = $api_key;
 	}
 
 	/**
-	 * Make - construct a service object
+	 * Make - construct a default service object
+	 *
+	 * If you need something other than the default - construct your own using the constructor rather than via this
+	 * factory.
 	 *
 	 * @param string $reseller_id
 	 * @param string $api_key
@@ -52,8 +57,9 @@ class SynergyWholesale
 		$config = ['location' => self::$base_url . "?wsdl", 'uri' => ''];
 
 		$client = new SoapClient(null, $config);
+		$responseGenerator = new ResponseGenerator();
 
-		return new static($client, $reseller_id, $api_key);
+		return new static($client, $responseGenerator, $reseller_id, $api_key);
 	}
 
 	/**
@@ -65,58 +71,58 @@ class SynergyWholesale
 	 */
 	public function execute(CommandInterface $command)
 	{
-		return $this->send($command->getCommand(), $command->build());
+		// build our options array for the SoapRequest
+		$options = $this->buildOptions($command->getRequestData());
+
+		// find the soap command to execute
+		$soapCommand = $this->getSoapCommand($command);
+
+		// send the SoapRequest
+		$response = $this->send($soapCommand, $options);
+
+		// build a response object
+		return $this->responseGenerator->buildResponse($command, $response, $soapCommand);
+	}
+
+	protected function buildOptions($options)
+	{
+		if (!is_array($options)) $options = array();
+
+		return $this->getAuthData() + $options;
+	}
+
+	protected function getAuthData()
+	{
+		return array(
+			'resellerID' => $this->reseller_id,
+			'apiKey' => $this->api_key
+		);
+	}
+
+	protected function getSoapCommand(CommandInterface $command)
+	{
+		$class = new ReflectionClass(get_class($command));
+		$shortName = $class->getShortName();
+		return lcfirst(substr_replace($shortName, '', strrpos($shortName, 'Command')));
 	}
 
 	protected function send($command, $options)
 	{
-		$this->last_command = $command;
-		if (!is_array($options)) $options = array();
-
-		$data = array('resellerID' => $this->reseller_id, 'apiKey' => $this->api_key);
-
 		try
 		{
-			$response = call_user_func(array($this->client, $command), $data + $options);
+			$response = call_user_func(array($this->client, $command), $options);
 		}
 		catch (SoapFault $e)
 		{
-			throw new SynergyWholesaleSoapException($e->getMessage(), $e->getCode(), $e->faultcode, $command, $e);
+			throw new SoapException($e->getMessage(), $e->getCode(), $e->faultcode, $command, $e);
 		}
 
-		$this->last_response = $response;
-		return $this->parseResponse($response);
+		if (empty($response) OR !is_object($response)) throw new BadDataException("Empty response received from Soap command [{$command}]", $command);
+		if (! $response instanceof stdClass) throw new BadDataException("Expected a stdClass response from Soap command [{$command}]", $command);
+		if (!isset($response->status)) throw new BadDataException("No status found in response to Soap command [{$command}]", $command);
+
+		return $response;
 	}
-
-	protected function parseResponse($data)
-	{
-		if (empty($data) OR !is_object($data)) throw new SynergyWholesaleResponseException("Empty response received", $this->last_command);
-
-		if (!isset($data->status)) throw new SynergyWholesaleResponseException("No status found in response", $this->last_command);
-
-		if (!empty($data->errorMessage))
-		{
-			throw new SynergyWholesaleErrorException(
-				$data->errorMessage,
-				isset($data->statusCode) ? $data->statusCode : 0,
-				$data->status,
-				$this->last_command
-			);
-		}
-
-		return $data;
-	}
-
-	/**
-	 * Return the response object from the last API call made
-	 *
-	 * @return Response Guzzle Reponse object
-	 */
-	public function getLastResponse()
-	{
-		return $this->last_response;
-	}
-
 }
 
 ?>

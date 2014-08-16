@@ -1,10 +1,8 @@
 <?php namespace Hampel\SynergyWholesale\Commands;
 
-class BalanceQueryCommand extends Command
+class BalanceQueryCommand implements CommandInterface
 {
-	protected $command = 'balanceQuery';
-
-	public function build()
+	public function getRequestData()
 	{
 		return array();
 	}

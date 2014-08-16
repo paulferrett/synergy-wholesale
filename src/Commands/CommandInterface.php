@@ -2,10 +2,8 @@
 
 interface CommandInterface
 {
-	public function getCommand();
-
 	/**
-	 * @return array    			the array of key-value pairs to sent for the command
+	 * @return array    the array of key-value pairs to send for the command
 	 */
-	public function build();
+	public function getRequestData();
 }
