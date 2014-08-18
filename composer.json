@@ -32,12 +32,12 @@
 	},
 	"autoload" : {
 		"psr-4" : {
-			"Hampel\\SynergyWholesale\\" : "src/"
+			"SynergyWholesale\\" : "src/"
 		}
 	},
 	"autoload-dev" : {
 		"psr-4" : {
-			"Hampel\\SynergyWholesale\\" : "tests/"
+			"SynergyWholesale\\" : "tests/"
 		}
 	}
 }

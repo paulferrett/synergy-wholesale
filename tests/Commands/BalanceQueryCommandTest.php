@@ -1,4 +1,4 @@
-<?php namespace Hampel\SynergyWholesale\Commands;
+<?php namespace SynergyWholesale\Commands;
 
 use stdClass;
 
@@ -17,7 +17,7 @@ class BalanceQueryCommandTest extends \PHPUnit_Framework_TestCase
 	{
 		$response = new stdClass();
 
-		$this->setExpectedException('Hampel\SynergyWholesale\Exception\ResponseErrorException', 'Expected property [status] missing from response data');
+		$this->setExpectedException('SynergyWholesale\Exception\ResponseErrorException', 'Expected property [status] missing from response data');
 
 		$command = new BalanceQueryCommand();
 		$command->parseResponse($response);
@@ -28,7 +28,7 @@ class BalanceQueryCommandTest extends \PHPUnit_Framework_TestCase
 		$response = new stdClass();
 		$response->status = "foo";
 
-		$this->setExpectedException('Hampel\SynergyWholesale\Exception\ResponseErrorException', 'Expected property [balance] missing from response data');
+		$this->setExpectedException('SynergyWholesale\Exception\ResponseErrorException', 'Expected property [balance] missing from response data');
 
 		$command = new BalanceQueryCommand();
 		$command->parseResponse($response);
@@ -40,7 +40,7 @@ class BalanceQueryCommandTest extends \PHPUnit_Framework_TestCase
 		$response->status = "foo";
 		$response->balance = "bar";
 
-		$this->setExpectedException('Hampel\SynergyWholesale\Exception\ResponseErrorException', 'Unknown error');
+		$this->setExpectedException('SynergyWholesale\Exception\ResponseErrorException', 'Unknown error');
 
 		$command = new BalanceQueryCommand();
 		$command->parseResponse($response);
@@ -53,7 +53,7 @@ class BalanceQueryCommandTest extends \PHPUnit_Framework_TestCase
 		$response->balance = "bar";
 		$response->errorMessage = "baz";
 
-		$this->setExpectedException('Hampel\SynergyWholesale\Exception\ResponseErrorException', 'baz');
+		$this->setExpectedException('SynergyWholesale\Exception\ResponseErrorException', 'baz');
 
 		$command = new BalanceQueryCommand();
 		$command->parseResponse($response);

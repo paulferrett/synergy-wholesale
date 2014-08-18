@@ -1,11 +1,10 @@
-<?php  namespace Hampel\SynergyWholesale; 
+<?php  namespace SynergyWholesale;
 
 use stdClass;
-use Hampel\SynergyWholesale\Commands\CommandInterface;
 
 interface ResponseGeneratorInterface
 {
-	public function buildResponse(CommandInterface $command, stdClass $response, $soapCommand);
+	public function buildResponse($commandName, stdClass $response, $soapCommand);
 }
 
 ?>

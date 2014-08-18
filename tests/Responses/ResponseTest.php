@@ -1,9 +1,18 @@
-<?php  namespace Hampel\SynergyWholesale\Responses;
+<?php  namespace SynergyWholesale\Responses;
 
 use Mockery;
 use stdClass;
 
 class ResponseTest extends \PHPUnit_Framework_TestCase {
+
+	public function testEmptyObjectException()
+	{
+		$data = new stdClass();
+
+		$this->setExpectedException('SynergyWholesale\Exception\BadDataException', 'No status found in response to Soap command [foo]');
+
+		new FooBarResponse($data, 'foo');
+	}
 
 	public function testDataException()
 	{
@@ -11,7 +20,18 @@ class ResponseTest extends \PHPUnit_Framework_TestCase {
 		$data->status = "OK";
 		$data->foo = "bar";
 
-		$this->setExpectedException('Hampel\SynergyWholesale\Exception\BadDataException', 'Expected property [bar] missing from response data');
+		$this->setExpectedException('SynergyWholesale\Exception\BadDataException', 'Expected property [bar] missing from response data');
+
+		new FooBarResponse($data, 'foo');
+	}
+
+	public function testErrorException()
+	{
+		$data = new stdClass();
+		$data->status = "NOT_OK";
+		$data->errorMessage = "FooBar";
+
+		$this->setExpectedException('SynergyWholesale\Exception\ResponseErrorException', 'FooBar');
 
 		new FooBarResponse($data, 'foo');
 	}
@@ -25,7 +45,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase {
 
 		$response = new FooBarResponse($data, 'foo');
 
-		$this->assertInstanceOf('Hampel\SynergyWholesale\Responses\FooBarResponse', $response);
+		$this->assertInstanceOf('SynergyWholesale\Responses\FooBarResponse', $response);
 		$this->assertTrue(isset($response->response));
 		$this->assertInstanceOf('stdClass', $response->response);
 		$this->assertTrue(isset($response->response->status));

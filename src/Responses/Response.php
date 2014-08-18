@@ -1,7 +1,8 @@
-<?php  namespace Hampel\SynergyWholesale\Responses;
+<?php  namespace SynergyWholesale\Responses;
 
 use stdClass;
-use Hampel\SynergyWholesale\Exception\BadDataException;
+use SynergyWholesale\Exception\BadDataException;
+use SynergyWholesale\Exception\ResponseErrorException;
 
 abstract class Response
 {
@@ -18,21 +19,31 @@ abstract class Response
 		$this->response = $response;
 		$this->command = $command;
 
+		$this->validateStatus();
 		$this->validateExpectedFields();
-		$this->validateResponseStatus();
 		$this->validateData();
 	}
 
-	abstract public function validateData();
-
-	protected function validateExpectedFields()
+	protected function validateStatus()
 	{
 		if (!isset($this->response->status))
 		{
-			$message = "No status found in response to Soap command [{$command}]";
-			throw new BadDataException($message, $command, $this->response);
+			$message = "No status found in response to Soap command [{$this->command}]";
+			throw new BadDataException($message, $this->command, $this->response);
 		}
 
+		$this->arrayify($this->successStatus);
+
+		// check the response status against the list of "success" status values
+		if (!in_array($this->response->status, $this->successStatus))
+		{
+			// we got something other than success, so throw an exception
+			throw new ResponseErrorException($this->response, $this->command);
+		}
+	}
+
+	protected function validateExpectedFields()
+	{
 		if (empty($this->expectedFields)) return;
 
 		$this->arrayify($this->expectedFields);
@@ -47,22 +58,13 @@ abstract class Response
 		}
 	}
 
-	protected function validateResponseStatus()
-	{
-		$this->arrayify($this->successStatus);
-
-		// check the response status against the list of "success" status values
-		if (!in_array($this->response->status, $this->successStatus))
-		{
-			// we got something other than success, so throw an exception
-			throw new ResponseErrorException($this->response, $this->command);
-		}
-	}
-
 	protected function arrayify(&$data)
 	{
 		if (!is_array($data)) $data = array($data);
 	}
+
+	abstract public function validateData();
+
 }
 
 ?>

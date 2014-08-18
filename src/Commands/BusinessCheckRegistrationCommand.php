@@ -1,6 +1,6 @@
-<?php namespace Hampel\SynergyWholesale\Commands;
+<?php namespace SynergyWholesale\Commands;
 
-use Hampel\SynergyWholesale\Exception\CommandException;
+use SynergyWholesale\Exception\CommandException;
 
 class BusinessCheckRegistrationCommand implements CommandInterface
 {

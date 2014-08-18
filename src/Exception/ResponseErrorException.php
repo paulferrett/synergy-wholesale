@@ -1,4 +1,4 @@
-<?php namespace Hampel\SynergyWholesale\Exception;
+<?php namespace SynergyWholesale\Exception;
 
 use stdClass;
 

@@ -1,40 +1,46 @@
 <?php
-namespace Hampel\SynergyWholesale
+namespace SynergyWholesale
 {
-
-	use Mockery;
 	use stdClass;
 
 	class ResponseGeneratorTest extends \PHPUnit_Framework_TestCase
 	{
 		public function testSoapException()
 		{
-			$command = Mockery::namedMock('Hampel\SynergyWholesale\Commands\FooCommand', 'Hampel\SynergyWholesale\Commands\CommandInterface');
+			$commandName = 'SynergyWholesale\Commands\FooCommand';
 
-			$this->setExpectedException('Hampel\SynergyWholesale\Exception\ClassNotRegisteredException', 'Response class [Hampel\SynergyWholesale\Responses\FooResponse] does not exist');
+			$this->setExpectedException('SynergyWholesale\Exception\ClassNotRegisteredException', 'Response class [SynergyWholesale\Responses\FooResponse] does not exist');
 
 			$rg = new ResponseGenerator();
-			$rg->buildResponse($command, new StdClass(), 'foo');
+			$rg->buildResponse($commandName, new StdClass(), 'foo');
 		}
 
 		public function testGenerator()
 		{
-			$command = Mockery::namedMock('Hampel\SynergyWholesale\Commands\BarCommand', 'Hampel\SynergyWholesale\Commands\CommandInterface');
+			$commandName = 'SynergyWholesale\Commands\BarCommand';
 
 			$rg = new ResponseGenerator();
-			$response = $rg->buildResponse($command, new StdClass(), 'bar');
+			$response = $rg->buildResponse($commandName, new StdClass(), 'bar');
 
-			$this->assertInstanceOf('Hampel\SynergyWholesale\Responses\BarResponse', $response);
-		}
-
-		public function tearDown()
-		{
-			Mockery::close();
+			$this->assertInstanceOf('SynergyWholesale\Responses\BarResponse', $response);
 		}
 	}
 }
 
-namespace Hampel\SynergyWholesale\Responses
+namespace SynergyWholesale\Commands
+{
+	class FooCommand
+	{
+
+	}
+
+	class BarCommand
+	{
+
+	}
+}
+
+namespace SynergyWholesale\Responses
 {
 	class BarResponse
 	{

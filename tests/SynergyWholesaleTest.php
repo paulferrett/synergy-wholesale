@@ -1,4 +1,4 @@
-<?php namespace Hampel\SynergyWholesale;
+<?php namespace SynergyWholesale;
 
 use Mockery;
 use stdClass;
@@ -9,19 +9,19 @@ class SynergyWholesaleTest extends \PHPUnit_Framework_TestCase
 	{
 		$this->client = Mockery::mock('SoapClient');
 
-		$this->command = Mockery::namedMock('FooCommand', 'Hampel\SynergyWholesale\Commands\CommandInterface');
+		$this->command = Mockery::namedMock('FooCommand', 'SynergyWholesale\Commands\CommandInterface');
 		$this->command->shouldReceive('getRequestData')->andReturn(array());
 
-		$this->responseGenerator = Mockery::mock('Hampel\SynergyWholesale\ResponseGeneratorInterface');
+		$this->responseGenerator = Mockery::mock('SynergyWholesale\ResponseGeneratorInterface');
 
-		$this->response = Mockery::mock('Hampel\SynergyWholesale\Responses\Response');
+		$this->response = Mockery::mock('SynergyWholesale\Responses\Response');
 	}
 
 	public function testSoapException()
 	{
 		$this->client->shouldReceive('foo')->andThrow('SoapFault', '1');
 
-		$this->setExpectedException('Hampel\SynergyWholesale\Exception\SoapException');
+		$this->setExpectedException('SynergyWholesale\Exception\SoapException');
 
 		$sw = new SynergyWholesale($this->client, $this->responseGenerator, "reseller_id", "api_key");
 		$sw->execute($this->command);
@@ -31,7 +31,7 @@ class SynergyWholesaleTest extends \PHPUnit_Framework_TestCase
 	{
 		$this->client->shouldReceive('foo')->andReturn(null);
 
-		$this->setExpectedException('Hampel\SynergyWholesale\Exception\BadDataException', 'Empty response received');
+		$this->setExpectedException('SynergyWholesale\Exception\BadDataException', 'Empty response received');
 
 		$sw = new SynergyWholesale($this->client, $this->responseGenerator, "reseller_id", "api_key");
 		$sw->execute($this->command);
@@ -41,17 +41,7 @@ class SynergyWholesaleTest extends \PHPUnit_Framework_TestCase
 	{
 		$this->client->shouldReceive('foo')->andReturn("");
 
-		$this->setExpectedException('Hampel\SynergyWholesale\Exception\BadDataException', 'Empty response received');
-
-		$sw = new SynergyWholesale($this->client, $this->responseGenerator, "reseller_id", "api_key");
-		$sw->execute($this->command);
-	}
-
-	public function testEmptyObjectResponseException()
-	{
-		$this->client->shouldReceive('foo')->andReturn(new stdClass());
-
-		$this->setExpectedException('Hampel\SynergyWholesale\Exception\BadDataException', 'No status found in response');
+		$this->setExpectedException('SynergyWholesale\Exception\BadDataException', 'Empty response received');
 
 		$sw = new SynergyWholesale($this->client, $this->responseGenerator, "reseller_id", "api_key");
 		$sw->execute($this->command);
@@ -63,20 +53,7 @@ class SynergyWholesaleTest extends \PHPUnit_Framework_TestCase
 
 		$this->client->shouldReceive('foo')->andReturn($otherobject);
 
-		$this->setExpectedException('Hampel\SynergyWholesale\Exception\BadDataException', 'Expected a stdClass response from Soap command [foo]');
-
-		$sw = new SynergyWholesale($this->client, $this->responseGenerator, "reseller_id", "api_key");
-		$sw->execute($this->command);
-	}
-
-	public function testBadObjectResponseException()
-	{
-		$testResponse = new stdClass();
-		$testResponse->bar = "baz";
-
-		$this->client->shouldReceive('foo')->andReturn($testResponse);
-
-		$this->setExpectedException('Hampel\SynergyWholesale\Exception\BadDataException', 'No status found in response to Soap command [foo]');
+		$this->setExpectedException('SynergyWholesale\Exception\BadDataException', 'Expected a stdClass response from Soap command [foo]');
 
 		$sw = new SynergyWholesale($this->client, $this->responseGenerator, "reseller_id", "api_key");
 		$sw->execute($this->command);
@@ -88,12 +65,12 @@ class SynergyWholesaleTest extends \PHPUnit_Framework_TestCase
 		$testResponse->status = "OK";
 
 		$this->client->shouldReceive('foo')->andReturn($testResponse);
-		$this->responseGenerator->shouldReceive('buildResponse')->with($this->command, $testResponse, 'foo')->andReturn($this->response);
+		$this->responseGenerator->shouldReceive('buildResponse')->with('FooCommand', $testResponse, 'foo')->andReturn($this->response);
 
 		$sw = new SynergyWholesale($this->client, $this->responseGenerator, "reseller_id", "api_key");
 		$response = $sw->execute($this->command);
 
-		$this->assertInstanceOf('Hampel\SynergyWholesale\Responses\Response', $response);
+		$this->assertInstanceOf('SynergyWholesale\Responses\Response', $response);
 	}
 
     public function tearDown()

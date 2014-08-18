@@ -1,31 +1,30 @@
-<?php  namespace Hampel\SynergyWholesale;
+<?php  namespace SynergyWholesale;
 
 use stdClass;
 use ReflectionClass;
-use Hampel\SynergyWholesale\Commands\CommandInterface;
-use Hampel\SynergyWholesale\Exception\ClassNotRegisteredException;
+use SynergyWholesale\Exception\ClassNotRegisteredException;
 
 class ResponseGenerator implements ResponseGeneratorInterface
 {
-	public function buildResponse(CommandInterface $command, stdClass $response, $soapCommand)
+	public function buildResponse($commandName, stdClass $response, $soapCommand)
 	{
-		$handler = $this->getResponseClass($command);
+		$handler = $this->getResponseClass($commandName);
 		return new $handler($response, $soapCommand);
 	}
 
 	/**
 	 * Converts command class names to response names
 	 *
-	 * Hampel\SynergyWholesale\Commands\FooCommand => Hampel\SynergyWholesale\Responses\FooResponse
+	 * SynergyWholesale\Commands\FooCommand => SynergyWholesale\Responses\FooResponse
 	 *
-	 * @param CommandInterface $command
+	 * @param string $commandName
 	 *
 	 * @return string Response class name
 	 * @throws Exception\ClassNotRegisteredException
 	 */
-	protected function getResponseClass(CommandInterface $command)
+	protected function getResponseClass($commandName)
 	{
-		$class = new ReflectionClass(get_class($command));
+		$class = new ReflectionClass($commandName);
 		$shortName = $class->getShortName();
 		$namespace = $class->getNamespaceName();
 

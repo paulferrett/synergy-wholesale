@@ -1,4 +1,4 @@
-<?php  namespace Hampel\SynergyWholesale\Responses;
+<?php  namespace SynergyWholesale\Responses;
 
 class DomainInfoResponse extends Response
 {

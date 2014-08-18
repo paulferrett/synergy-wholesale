@@ -1,13 +1,12 @@
-<?php namespace Hampel\SynergyWholesale;
+<?php namespace SynergyWholesale;
 
 use stdClass;
 use SoapFault;
 use SoapClient;
 use ReflectionClass;
-use Hampel\SynergyWholesale\Commands\CommandInterface;
-use Hampel\SynergyWholesale\Exception\SoapException;
-use Hampel\SynergyWholesale\Exception\BadDataException;
-use Hampel\SynergyWholesale\Exception\ResponseErrorException;
+use SynergyWholesale\Commands\CommandInterface;
+use SynergyWholesale\Exception\SoapException;
+use SynergyWholesale\Exception\BadDataException;
 
 class SynergyWholesale
 {
@@ -72,19 +71,22 @@ class SynergyWholesale
 	public function execute(CommandInterface $command)
 	{
 		// build our options array for the SoapRequest
-		$options = $this->buildOptions($command->getRequestData());
+		$options = $this->prepareOptions($command->getRequestData());
+
+		// get the class name for the command - will be used to derive the soapCommand and the response handler
+		$commandName = $this->getClassName($command);
 
 		// find the soap command to execute
-		$soapCommand = $this->getSoapCommand($command);
+		$soapCommand = $this->deriveSoapCommand($commandName);
 
 		// send the SoapRequest
-		$response = $this->send($soapCommand, $options);
+		$response = $this->sendSoapCommand($soapCommand, $options);
 
 		// build a response object
-		return $this->responseGenerator->buildResponse($command, $response, $soapCommand);
+		return $this->responseGenerator->buildResponse($commandName, $response, $soapCommand);
 	}
 
-	protected function buildOptions($options)
+	protected function prepareOptions($options)
 	{
 		if (!is_array($options)) $options = array();
 
@@ -99,26 +101,36 @@ class SynergyWholesale
 		);
 	}
 
-	protected function getSoapCommand(CommandInterface $command)
+	protected function getClassName($object)
 	{
-		$class = new ReflectionClass(get_class($command));
-		$shortName = $class->getShortName();
+		return get_class($object);
+	}
+
+	protected function deriveSoapCommand($commandName)
+	{
+		$shortName = $this->getShortName($commandName);
 		return lcfirst(substr_replace($shortName, '', strrpos($shortName, 'Command')));
 	}
 
-	protected function send($command, $options)
+	protected function getShortName($className)
+	{
+		$class = new ReflectionClass($className);
+		return $class->getShortName();
+	}
+
+	protected function sendSoapCommand($soapCommand, array $options)
 	{
 		try
 		{
-			$response = call_user_func(array($this->client, $command), $options);
+			$response = call_user_func(array($this->client, $soapCommand), $options);
 		}
 		catch (SoapFault $e)
 		{
-			throw new SoapException($e->getMessage(), $e->getCode(), $e->faultcode, $command, $e);
+			throw new SoapException($e->getMessage(), $e->getCode(), $e->faultcode, $soapCommand, $e);
 		}
 
-		if (empty($response) OR !is_object($response)) throw new BadDataException("Empty response received from Soap command [{$command}]", $command);
-		if (! $response instanceof stdClass) throw new BadDataException("Expected a stdClass response from Soap command [{$command}]", $command);
+		if (empty($response) OR !is_object($response)) throw new BadDataException("Empty response received from Soap command [{$soapCommand}]", $soapCommand);
+		if (! $response instanceof stdClass) throw new BadDataException("Expected a stdClass response from Soap command [{$soapCommand}]", $soapCommand);
 
 		return $response;
 	}

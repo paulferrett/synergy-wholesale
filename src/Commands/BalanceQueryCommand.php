@@ -1,4 +1,4 @@
-<?php namespace Hampel\SynergyWholesale\Commands;
+<?php namespace SynergyWholesale\Commands;
 
 class BalanceQueryCommand implements CommandInterface
 {
