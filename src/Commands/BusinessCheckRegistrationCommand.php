@@ -2,11 +2,9 @@
 
 use Hampel\SynergyWholesale\Exception\CommandException;
 
-class BusinessCheckRegistrationCommand extends Command
+class BusinessCheckRegistrationCommand implements CommandInterface
 {
-	protected $command = 'businessCheckRegistration';
-
-	protected $resgistrationNumber;
+	protected $registrationNumber;
 
 	protected $registrationState;
 

@@ -119,7 +119,6 @@ class SynergyWholesale
 
 		if (empty($response) OR !is_object($response)) throw new BadDataException("Empty response received from Soap command [{$command}]", $command);
 		if (! $response instanceof stdClass) throw new BadDataException("Expected a stdClass response from Soap command [{$command}]", $command);
-		if (!isset($response->status)) throw new BadDataException("No status found in response to Soap command [{$command}]", $command);
 
 		return $response;
 	}

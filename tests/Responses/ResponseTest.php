@@ -43,6 +43,8 @@ class ResponseTest extends \PHPUnit_Framework_TestCase {
 class FooBarResponse extends Response
 {
 	protected $expectedFields = array('foo', 'bar');
+
+	public function validateData(){}
 }
 
 ?>
