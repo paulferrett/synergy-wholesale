@@ -1,9 +1,8 @@
 <?php namespace SynergyWholesale\Exception;
 
-class ClassNotRegisteredException extends SynergyWholesaleException
+class ClassNotRegisteredException extends LogicException
 {
 
 }
 
 ?>
- 

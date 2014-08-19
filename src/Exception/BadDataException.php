@@ -2,7 +2,7 @@
 
 use stdClass;
 
-class BadDataException extends SynergyWholesaleException
+class BadDataException extends RuntimeException
 {
 	protected $command;
 

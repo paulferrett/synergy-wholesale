@@ -11,7 +11,7 @@ namespace SynergyWholesale
 
 			$this->setExpectedException('SynergyWholesale\Exception\ClassNotRegisteredException', 'Response class [SynergyWholesale\Responses\FooResponse] does not exist');
 
-			$rg = new ResponseGenerator();
+			$rg = new BasicResponseGenerator();
 			$rg->buildResponse($commandName, new StdClass(), 'foo');
 		}
 
@@ -19,7 +19,7 @@ namespace SynergyWholesale
 		{
 			$commandName = 'SynergyWholesale\Commands\BarCommand';
 
-			$rg = new ResponseGenerator();
+			$rg = new BasicResponseGenerator();
 			$response = $rg->buildResponse($commandName, new StdClass(), 'bar');
 
 			$this->assertInstanceOf('SynergyWholesale\Responses\BarResponse', $response);

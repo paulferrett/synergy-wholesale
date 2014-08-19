@@ -1,6 +1,6 @@
 <?php namespace SynergyWholesale\Commands;
 
-interface CommandInterface
+interface Command
 {
 	/**
 	 * @return array    the array of key-value pairs to send for the command

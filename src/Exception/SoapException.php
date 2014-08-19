@@ -1,6 +1,6 @@
 <?php namespace SynergyWholesale\Exception;
 
-class SoapException extends SynergyWholesaleException
+class SoapException extends RuntimeException
 {
 	protected $status;
 

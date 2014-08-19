@@ -9,10 +9,10 @@ class SynergyWholesaleTest extends \PHPUnit_Framework_TestCase
 	{
 		$this->client = Mockery::mock('SoapClient');
 
-		$this->command = Mockery::namedMock('FooCommand', 'SynergyWholesale\Commands\CommandInterface');
+		$this->command = Mockery::namedMock('FooCommand', 'SynergyWholesale\Commands\Command');
 		$this->command->shouldReceive('getRequestData')->andReturn(array());
 
-		$this->responseGenerator = Mockery::mock('SynergyWholesale\ResponseGeneratorInterface');
+		$this->responseGenerator = Mockery::mock('SynergyWholesale\ResponseGenerator');
 
 		$this->response = Mockery::mock('SynergyWholesale\Responses\Response');
 	}

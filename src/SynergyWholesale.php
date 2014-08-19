@@ -4,7 +4,7 @@ use stdClass;
 use SoapFault;
 use SoapClient;
 use ReflectionClass;
-use SynergyWholesale\Commands\CommandInterface;
+use SynergyWholesale\Commands\Command;
 use SynergyWholesale\Exception\SoapException;
 use SynergyWholesale\Exception\BadDataException;
 
@@ -22,18 +22,18 @@ class SynergyWholesale
 	/** @var SoapClient our Soap Client object */
 	protected $client;
 
-	/** @var ResponseGeneratorInterface */
+	/** @var ResponseGenerator */
 	protected $responseGenerator;
 
 	/**
 	 * Constructor
 	 *
 	 * @param SoapClient $client							soap client
-	 * @param ResponseGeneratorInterface $responseGenerator	response generator
+	 * @param ResponseGenerator $responseGenerator	response generator
 	 * @param string $reseller_id 							Synergy Wholesale reseller id
 	 * @param string $api_key								Synergy Wholesale api key
 	 */
-	public function __construct(SoapClient $client, ResponseGeneratorInterface $responseGenerator, $reseller_id, $api_key)
+	public function __construct(SoapClient $client, ResponseGenerator $responseGenerator, $reseller_id, $api_key)
 	{
 		$this->client = $client;
 		$this->responseGenerator = $responseGenerator;
@@ -56,7 +56,7 @@ class SynergyWholesale
 		$config = ['location' => self::$base_url . "?wsdl", 'uri' => ''];
 
 		$client = new SoapClient(null, $config);
-		$responseGenerator = new ResponseGenerator();
+		$responseGenerator = new BasicResponseGenerator();
 
 		return new static($client, $responseGenerator, $reseller_id, $api_key);
 	}
@@ -64,11 +64,11 @@ class SynergyWholesale
 	/**
 	 * Make a call to the API via Guzzle
 	 *
-	 * @param CommandInterface $command		Command to send
+	 * @param Command $command		Command to send
 	 *
 	 * @return mixed						Data returned from api call
 	 */
-	public function execute(CommandInterface $command)
+	public function execute(Command $command)
 	{
 		// build our options array for the SoapRequest
 		$options = $this->prepareOptions($command->getRequestData());

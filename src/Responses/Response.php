@@ -63,8 +63,10 @@ abstract class Response
 		if (!is_array($data)) $data = array($data);
 	}
 
-	abstract public function validateData();
-
+	protected function validateData()
+	{
+		return; // do nothing by default - let subclasses provide their own implementation if they choose
+	}
 }
 
 ?>

@@ -1,6 +1,6 @@
 <?php namespace SynergyWholesale\Commands;
 
-class BalanceQueryCommand implements CommandInterface
+class BalanceQueryCommand implements Command
 {
 	public function getRequestData()
 	{

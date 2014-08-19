@@ -2,7 +2,7 @@
 
 use stdClass;
 
-class ResponseErrorException extends SynergyWholesaleException
+class ResponseErrorException extends RuntimeException
 {
 	protected $response;
 

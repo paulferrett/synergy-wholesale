@@ -24,7 +24,8 @@
 		"MIT"
 	],
 	"require" : {
-		"php" : ">=5.3.0"
+		"php" : ">=5.3.0",
+		"hampel/validate": "~2.1"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",

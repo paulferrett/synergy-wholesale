@@ -2,7 +2,7 @@
 
 use SynergyWholesale\Exception\CommandException;
 
-class BusinessCheckRegistrationCommand implements CommandInterface
+class BusinessCheckRegistrationCommand implements Command
 {
 	protected $registrationNumber;
 
