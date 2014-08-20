@@ -1,5 +1,7 @@
 <?php  namespace SynergyWholesale\Responses;
 
+use SynergyWholesale\Exception\BadDataException;
+use SynergyWholesale\Exception\InvalidArgumentException;
 use SynergyWholesale\Types\Domain;
 
 class DomainInfoResponse extends Response
@@ -13,7 +15,15 @@ class DomainInfoResponse extends Response
 
 	protected function validateData()
 	{
-		$domain = new Domain($this->response->domainName);
+		try
+		{
+			$domain = new Domain($this->response->domainName);
+		}
+		catch (InvalidArgumentException $e)
+		{
+			throw new BadDataException($e->getMessage(), $this->command, $this->response);
+		}
+
 		if ($domain->getTld() == 'au')
 		{
 			if (!isset($this->response->auRegistrantID))

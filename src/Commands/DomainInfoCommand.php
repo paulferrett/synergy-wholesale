@@ -1,26 +1,19 @@
 <?php namespace SynergyWholesale\Commands;
 
-use Hampel\Validate\Validator;
-use SynergyWholesale\Exception\InvalidArgumentException;
+use SynergyWholesale\Types\Domain;
 
 class DomainInfoCommand implements Command
 {
-	protected $domainName;
+	protected $domain;
 
-	public function __construct($domainName)
+	public function __construct(Domain $domain)
 	{
-		$validator = new Validator();
-		if (!$validator->isDomain($domainName, $validator->getTlds()))
-		{
-			throw new InvalidArgumentException("Invalid domain name [{$domainName}]");
-		}
-
-		$this->domainName = $domainName;
+		$this->domain = $domain;
 	}
 
 	public function getRequestData()
 	{
-		return array('domainName' => $this->domainName);
+		return array('domainName' => $this->domain->getName());
 	}
 }
 
