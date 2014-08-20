@@ -1,19 +1,19 @@
 <?php namespace SynergyWholesale\Commands;
 
-class CheckDomainCommand extends Command
+use SynergyWholesale\Types\Domain;
+
+class CheckDomainCommand implements Command
 {
-	protected $command = 'checkDomain';
+	protected $domain;
 
-	protected $domainName;
-
-	public function __construct($domainName)
+	public function __construct(Domain $domain)
 	{
-		$this->domainName = $domainName;
+		$this->domain = $domain;
 	}
 
-	public function buildRequest()
+	public function getRequestData()
 	{
-		return array('domainName' => $this->domainName);
+		return array('domainName' => $this->domain->getName());
 	}
 }
 
