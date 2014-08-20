@@ -12,7 +12,7 @@ abstract class Response
 
 	protected $expectedFields = array();
 
-	protected $successStatus = array('OK');
+	protected $successStatus = array('OK', 'ok');
 
 	public function __construct(stdClass $response, $command = "")
 	{
