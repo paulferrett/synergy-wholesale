@@ -1,19 +1,33 @@
 <?php namespace SynergyWholesale\Commands;
 
-class BulkCheckDomainCommand extends Command
-{
-	protected $command = 'bulkcheckDomain';
+use SynergyWholesale\Exception\InvalidArgumentException;
+use SynergyWholesale\Types\Domain;
 
+class BulkCheckDomainCommand implements Command
+{
 	protected $domainList;
 
 	public function __construct(array $domainList)
 	{
+		foreach ($domainList as $domain)
+		{
+			if (!$domain instanceof Domain)
+			{
+				throw new InvalidArgumentException("BulkCheckDomainCommand expects an array of SynergyWholesale\\Types\\Domain objects");
+			}
+		}
 		$this->domainList = $domainList;
 	}
 
-	public function buildRequest()
+	public function getRequestData()
 	{
-		return array('domainList' => $this->domainList);
+		$domainList = array();
+		foreach ($this->domainList as $domain)
+		{
+			$domainList[] = $domain->getName();
+		}
+
+		return array('domainList' => $domainList);
 	}
 }
 
