@@ -160,7 +160,7 @@ class SynergyWholesale
 		{
 			$message = "Empty response received from Soap command [{$soapCommand}]";
 
-			$this->logger->log('error', $message);
+			$this->log('error', $message);
 			throw new BadDataException($message, $soapCommand);
 		}
 
@@ -168,7 +168,7 @@ class SynergyWholesale
 		{
 			$message = "Expected a stdClass response from Soap command [{$soapCommand}]";
 
-			$this->logger->log('error', $message);
+			$this->log('error', $message);
 			throw new BadDataException($message, $soapCommand);
 		}
 	}
