@@ -192,7 +192,9 @@ class SynergyWholesale
 
 	protected function logResponse(stdClass $response, $soapCommand)
 	{
-		$this->log('debug', "{$soapCommand} response", $this->objectToArray($response));
+		$responseData = $this->objectToArray($response);
+		if (isset($responseData['domainPassword'])) $responseData['domainPassword'] = "*****";
+		$this->log('debug', "{$soapCommand} response", $responseData);
 	}
 
 	protected function log($level, $message, array $context = array())
