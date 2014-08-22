@@ -34,6 +34,11 @@ class Domain
 		$name = $this->getName();
 		return substr($name, 0, strrpos($name, '.'));
 	}
+
+	public function __toString()
+	{
+		return $this->getName();
+	}
 }
 
 ?>
