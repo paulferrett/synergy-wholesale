@@ -23,7 +23,7 @@ class SynergyWholesaleTest extends \PHPUnit_Framework_TestCase
 
 		$this->setExpectedException('SynergyWholesale\Exception\SoapException');
 
-		$sw = new SynergyWholesale($this->client, $this->responseGenerator, "reseller_id", "api_key");
+		$sw = new SynergyWholesale($this->client, $this->responseGenerator, null, "reseller_id", "api_key");
 		$sw->execute($this->command);
 	}
 
@@ -33,7 +33,7 @@ class SynergyWholesaleTest extends \PHPUnit_Framework_TestCase
 
 		$this->setExpectedException('SynergyWholesale\Exception\BadDataException', 'Empty response received');
 
-		$sw = new SynergyWholesale($this->client, $this->responseGenerator, "reseller_id", "api_key");
+		$sw = new SynergyWholesale($this->client, $this->responseGenerator, null, "reseller_id", "api_key");
 		$sw->execute($this->command);
 	}
 
@@ -43,7 +43,7 @@ class SynergyWholesaleTest extends \PHPUnit_Framework_TestCase
 
 		$this->setExpectedException('SynergyWholesale\Exception\BadDataException', 'Empty response received');
 
-		$sw = new SynergyWholesale($this->client, $this->responseGenerator, "reseller_id", "api_key");
+		$sw = new SynergyWholesale($this->client, $this->responseGenerator, null, "reseller_id", "api_key");
 		$sw->execute($this->command);
 	}
 
@@ -55,7 +55,7 @@ class SynergyWholesaleTest extends \PHPUnit_Framework_TestCase
 
 		$this->setExpectedException('SynergyWholesale\Exception\BadDataException', 'Expected a stdClass response from Soap command [foo]');
 
-		$sw = new SynergyWholesale($this->client, $this->responseGenerator, "reseller_id", "api_key");
+		$sw = new SynergyWholesale($this->client, $this->responseGenerator, null, "reseller_id", "api_key");
 		$sw->execute($this->command);
 	}
 
@@ -67,7 +67,7 @@ class SynergyWholesaleTest extends \PHPUnit_Framework_TestCase
 		$this->client->shouldReceive('foo')->andReturn($testResponse);
 		$this->responseGenerator->shouldReceive('buildResponse')->with('FooCommand', $testResponse, 'foo')->andReturn($this->response);
 
-		$sw = new SynergyWholesale($this->client, $this->responseGenerator, "reseller_id", "api_key");
+		$sw = new SynergyWholesale($this->client, $this->responseGenerator, null, "reseller_id", "api_key");
 		$response = $sw->execute($this->command);
 
 		$this->assertInstanceOf('SynergyWholesale\Responses\Response', $response);
