@@ -24,6 +24,10 @@ class DomainPassword
 		return $this->password;
 	}
 
+	public function __toString()
+	{
+		return $this->getPassword();
+	}
 }
 
 ?>
