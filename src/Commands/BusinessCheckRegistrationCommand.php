@@ -1,5 +1,6 @@
 <?php namespace SynergyWholesale\Commands;
 
+use SynergyWholesale\Types\AuState;
 use SynergyWholesale\Exception\CommandException;
 
 class BusinessCheckRegistrationCommand implements Command
@@ -8,26 +9,22 @@ class BusinessCheckRegistrationCommand implements Command
 
 	protected $registrationState;
 
-	private $states = array('NSW', 'VIC', 'QLD', 'TAS', 'ACT', 'SA', 'WA', 'NT');
-
-	public function __construct($registrationNumber, $registrationState = "")
+	public function __construct($registrationNumber, AuState $registrationState = null)
 	{
 		$this->resgistrationNumber = $registrationNumber;
-
-		if (!empty($registrationState))
-		{
-			$state = strtoupper($registrationState);
-			if (!in_array($state, $this->states)) throw new CommandException("Invalid state [{$registrationState}]");
-			$this->registrationState = $state;
-		}
+		$this->registrationState = $registrationState;
 	}
 
-	public function buildRequest()
+	public function getRequestData()
 	{
-		return array(
-			'registrationNumber' => $this->resgistrationNumber,
-			'registrationState' => $this->registrationState
-		);
+		$data = array('registrationNumber' => $this->resgistrationNumber);
+
+		if (isset($this->registrationState))
+		{
+			$data['registrationState'] = $this->registrationState->getState();
+		}
+
+		return $data;
 	}
 }
 
