@@ -1,0 +1,30 @@
+<?php  namespace SynergyWholesale\Types; 
+
+use SynergyWholesale\Exception\InvalidArgumentException;
+
+class AuPostCode
+{
+	private $postcode;
+
+	function __construct($postcode)
+	{
+		if (!is_scalar($postcode) OR !is_numeric($postcode) OR strlen(strval($postcode)) != 4)
+		{
+			throw new InvalidArgumentException("Invalid postcode [{$postcode}]");
+		}
+		$this->postcode = $postcode;
+	}
+
+	public function getPostcode()
+	{
+		return strval($this->postcode);
+	}
+
+	public function __toString()
+	{
+		return $this->getPostcode();
+	}
+}
+
+?>
+ 
