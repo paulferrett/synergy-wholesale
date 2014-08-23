@@ -26,13 +26,19 @@ class Domain
 	public function getTld()
 	{
 		$name = $this->getName();
-		return substr($name, strrpos($name, '.') + 1);
+		return substr($name, strpos($name, '.'));
 	}
 
 	public function getBaseName()
 	{
 		$name = $this->getName();
-		return substr($name, 0, strrpos($name, '.'));
+		return substr($name, 0, strpos($name, '.'));
+	}
+
+	public function isCcTld()
+	{
+		$tld = $this->getTld();
+		return (substr_count($tld, '.') > 1);
 	}
 
 	public function __toString()
