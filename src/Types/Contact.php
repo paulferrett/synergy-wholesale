@@ -98,9 +98,9 @@ class Contact
 		return $this->country;
 	}
 
-	public function getCountryName()
+	public function getCountryCode()
 	{
-		return $this->country->getCountryName();
+		return $this->country->getCountryCode();
 	}
 
 	public function getPostcode()
