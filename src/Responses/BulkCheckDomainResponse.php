@@ -9,22 +9,25 @@ class BulkCheckDomainResponse extends Response
 
 	protected function validateData()
 	{
-		dd($this->response);
+		if (empty($this->response->domainList) OR !is_array($this->response->domainList))
+		{
+			throw new BadDataException("Empty or invalid domainList found in response");
+		}
 
 		foreach ($this->response->domainList as $domain)
 		{
-			if (!isset($domain->domain))
+			if (!isset($domain['domain']))
 			{
 				throw new BadDataException("Expected property 'domain' not found in response domainList");
 			}
-			if (!isset($domain->available))
+			if (!isset($domain['available']))
 			{
 				throw new BadDataException("Expected property 'available' not found in response domainList");
 			}
 
 			try
 			{
-				$domain = new Domain($domain->domain);
+				$domain = new Domain($domain['domain']);
 			}
 			catch (InvalidArgumentException $e)
 			{
@@ -39,7 +42,7 @@ class BulkCheckDomainResponse extends Response
 
 		foreach ($this->response->domainList as $domain)
 		{
-			$domainList[$domain->domain] = ($domain->available == 1);
+			$domainList[$domain['domain']] = ($domain['available'] == 1);
 		}
 
 		return $domainList;
