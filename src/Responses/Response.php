@@ -14,7 +14,7 @@ abstract class Response
 
 	protected $successStatus = array('OK', 'ok');
 
-	public function __construct(stdClass $response, $command = "")
+	public function __construct(stdClass $response, $command)
 	{
 		$this->response = $response;
 		$this->command = $command;
