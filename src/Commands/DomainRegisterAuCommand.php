@@ -48,11 +48,11 @@ class DomainRegisterAuCommand implements Command
 		}
 
 		$this->domainName = $domainName;
+		$this->years = $years;
 		$this->nameServers = $nameServers;
-		$this->registrant = $registrant;
 		$this->registrant_contact = $registrant_contact;
 		$this->technical_contact = $technical_contact;
-		$this->years = $years;
+		$this->registrant = $registrant;
 	}
 
 	public function getRequestData()
