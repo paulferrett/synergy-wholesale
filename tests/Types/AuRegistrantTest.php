@@ -58,8 +58,8 @@ class AuRegistrantTest extends \PHPUnit_Framework_TestCase
 		$reg = AuRegistrant::newFromAuBusinessRegistration($br);
 		$this->assertEquals('foo', $reg->getRegistrantName());
 		$this->assertEquals('111111111', $reg->getRegistrantId());
-		$this->assertEquals('ACN', $reg->getRegistrantIdType()->getIdType());
-		$this->assertEquals('Company', $reg->getEligibilityType()->getOrganisationType());
+		$this->assertEquals('ACN', $reg->getRegistrantIdTypeString());
+		$this->assertEquals('Company', $reg->getEligibilityTypeString());
 		$this->assertNull($reg->getEligibilityName());
 		$this->assertNull($reg->getEligibilityId());
 		$this->assertNull($reg->getEligibilityIdType());
@@ -91,12 +91,11 @@ class AuRegistrantTest extends \PHPUnit_Framework_TestCase
 		$reg = AuRegistrant::newFromAuBusinessRegistration($br, 'bar');
 		$this->assertEquals('bar', $reg->getRegistrantName());
 		$this->assertNull($reg->getRegistrantId());
-		$this->assertNull($reg->getRegistrantIdType());
-		$this->assertEquals('Registered Business', $reg->getEligibilityType()->getOrganisationType());
+		$this->assertNull($reg->getRegistrantIdTypeString());
+		$this->assertEquals('Registered Business', $reg->getEligibilityTypeString());
 		$this->assertEquals('foo', $reg->getEligibilityName());
 		$this->assertEquals('B111', $reg->getEligibilityId());
-		$this->assertEquals('NSW BN', $reg->getEligibilityIdType()->getIdType());
-
+		$this->assertEquals('NSW BN', $reg->getEligibilityIdTypeString());
 	}
 }
 

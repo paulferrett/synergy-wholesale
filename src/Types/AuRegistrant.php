@@ -101,14 +101,27 @@ class AuRegistrant
 		return $this->registrantId;
 	}
 
+	public function getRegistrantIdType()
+	{
+		return $this->registrantIdType;
+	}
+
+	public function getRegistrantIdTypeString()
+	{
+		if (isset($this->registrantIdType))
+		{
+			return strval($this->registrantIdType);
+		}
+	}
+
 	public function getEligibilityType()
 	{
 		return $this->eligibilityType;
 	}
 
-	public function getRegistrantIdType()
+	public function getEligibilityTypeString()
 	{
-		return $this->registrantIdType;
+		return strval($this->eligibilityType);
 	}
 
 	public function getEligibilityName()
@@ -124,6 +137,14 @@ class AuRegistrant
 	public function getEligibilityIdType()
 	{
 		return $this->eligibilityIdType;
+	}
+
+	public function getEligibilityIdTypeString()
+	{
+		if (isset($this->eligibilityIdType))
+		{
+			return strval($this->eligibilityIdType);
+		}
 	}
 }
 
