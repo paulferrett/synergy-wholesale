@@ -13,7 +13,7 @@ class CheckDomainCommand implements Command
 
 	public function getRequestData()
 	{
-		return array('domainName' => $this->domain->getName());
+		return array('domainName' => strval($this->domain));
 	}
 }
 
