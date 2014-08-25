@@ -73,6 +73,10 @@ class BusinessCheckRegistrationResponse extends Response
 		{
 			return $this->response->state;
 		}
+		elseif (isset($this->response->registrationState))
+		{
+			return $this->response->registrationState;
+		}
 	}
 
 	public function getPostcode()
@@ -83,28 +87,20 @@ class BusinessCheckRegistrationResponse extends Response
 		}
 	}
 
-	public function getAuBusinessRegistration($registrationNumber, AuState $state = null)
+	public function getAuBusinessRegistration($registrationNumber)
 	{
 		$entityStatus = $this->getEntityStatus();
 		$organisationType = $this->getOrganisationType();
-		$responseState = $this->getState();
 
-		if ($entityStatus == 'Registered' AND !isset($organisationType))
+		if ($entityStatus == 'Registered' AND isset($this->response->registrationState) AND !isset($organisationType))
 		{
 			$organisationType = 'Registered Business';
 		}
 
-		if (isset($responseState))
-		{
-			$state = new AuState($responseState);
-		}
-		elseif (isset($state))
+		$state = $this->getState();
+		if (isset($state))
 		{
 			$state = new AuState($state);
-		}
-		elseif ($organisationType == 'Registered Business')
-		{
-			throw new InvalidArgumentException("State must be supplied for a Registered Business");
 		}
 
 		$postcode = $this->getPostcode();
@@ -114,9 +110,12 @@ class BusinessCheckRegistrationResponse extends Response
 		}
 
 		$organisationType = new AuOrganisationType($organisationType);
-		$registrationNumber = $this->getRegistrationNumber() ?: $registrationNumber;
 
-		$asicNumber = $this->getAsicNumber();
+		$registrationNumber = $this->getRegistrationNumber() ?: $registrationNumber;
+		$registrationNumber = str_replace(' ', '', $registrationNumber);
+
+		$asicNumber = $this->getAsicNumber() ? str_replace(' ', '', $this->getAsicNumber()) : $this->getAsicNumber();
+
 		$entityName = $this->getEntityName();
 		$tradingName = $this->getTradingName();
 		$legalName = $this->getLegalName();
