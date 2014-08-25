@@ -20,7 +20,7 @@ class DnsConfiguration
 
 	public function __construct($config)
 	{
-		if (!array_key_exists($config, $this->config_types))
+		if (!array_key_exists($config, self::$config_types))
 		{
 			throw new UnknownDnsConfigurationException("Unknown DNS Configuration [{$config}]");
 		}
@@ -34,7 +34,7 @@ class DnsConfiguration
 
 	public function getConfigName()
 	{
-		return $this->config_types[$this->config];
+		return self::$config_types[$this->config];
 	}
 
 	public static function custom()
