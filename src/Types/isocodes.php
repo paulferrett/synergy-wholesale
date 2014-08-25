@@ -74,7 +74,7 @@ return array(
 	'FO' => 'Faroe Islands',
 	'FR' => 'France',
 	'GA' => 'Gabon',
-	'GB' => 'United',
+	'GB' => 'United Kingdom',
 	'GD' => 'Grenada',
 	'GE' => 'Georgia',
 	'GF' => 'French Guiana',
