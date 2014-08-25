@@ -29,6 +29,12 @@ class Domain
 		return substr($name, strpos($name, '.'));
 	}
 
+	public function getgTld()
+	{
+		$name = $this->getName();
+		return substr($name, strrpos($name, '.'));
+	}
+
 	public function getBaseName()
 	{
 		$name = $this->getName();

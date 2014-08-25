@@ -15,6 +15,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertEquals('example.com', $domain->getName());
 		$this->assertEquals('.com', $domain->getTld());
+		$this->assertEquals('.com', $domain->getgTld());
 		$this->assertEquals('example', $domain->getBaseName());
 		$this->assertFalse($domain->isCcTld());
 
@@ -22,6 +23,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertEquals('example.com.au', $domain->getName());
 		$this->assertEquals('.com.au', $domain->getTld());
+		$this->assertEquals('.au', $domain->getgTld());
 		$this->assertEquals('example', $domain->getBaseName());
 		$this->assertTrue($domain->isCcTld());
 	}
