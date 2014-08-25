@@ -27,7 +27,7 @@ class BulkCheckDomainResponse extends Response
 
 			try
 			{
-				$domain = new Domain($domain['domain']);
+				new Domain($domain['domain']);
 			}
 			catch (InvalidArgumentException $e)
 			{
