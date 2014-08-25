@@ -1,8 +1,10 @@
 <?php  namespace SynergyWholesale\Responses;
 
+use SynergyWholesale\Types\Domain;
+use SynergyWholesale\Types\DnsConfiguration;
 use SynergyWholesale\Exception\BadDataException;
 use SynergyWholesale\Exception\InvalidArgumentException;
-use SynergyWholesale\Types\Domain;
+use SynergyWholesale\Exception\UnknownDnsConfigurationException;
 
 class DomainInfoResponse extends Response
 {
@@ -24,7 +26,13 @@ class DomainInfoResponse extends Response
 			throw new BadDataException($e->getMessage(), $this->command, $this->response);
 		}
 
-		if ($domain->getTld() == 'au')
+		if (!is_array($this->response->nameServers))
+		{
+			$message = "nameServers should be an array";
+			throw new BadDataException($message, $this->command, $this->response);
+		}
+
+		if ($domain->getgTld() == '.au')
 		{
 			if (!isset($this->response->auRegistrantID))
 			{
@@ -37,6 +45,15 @@ class DomainInfoResponse extends Response
 				$message = "Expected property auRegistrantIDType missing from response data";
 				throw new BadDataException($message, $this->command, $this->response);
 			}
+		}
+
+		try
+		{
+			new DnsConfiguration($this->response->dnsConfig);
+		}
+		catch (UnknownDnsConfigurationException $e)
+		{
+			throw new BadDataException($e->getMessage(), $this->command, $this->response);
 		}
 	}
 
@@ -60,9 +77,14 @@ class DomainInfoResponse extends Response
 		return $this->response->nameServers;
 	}
 
-	public function getDnsConfigType()
+	public function getDnsConfig()
 	{
 		return $this->response->dnsConfig;
+	}
+
+	public function getDnsConfigName()
+	{
+		return $this->response->dnsConfigName;
 	}
 
 	public function getDomainPassword()
