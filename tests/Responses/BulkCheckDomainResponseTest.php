@@ -38,18 +38,17 @@ class BulkCheckDomainResponseTest extends \PHPUnit_Framework_TestCase
 
 	public function testResponse()
 	{
+		$d1 = new stdClass();
+		$d1->domain = 'foo.com';
+		$d1->available = 0;
+
+		$d2 = new stdClass();
+		$d2->domain = 'foo.com.au';
+		$d2->available = 1;
+
 		$data = new stdClass();
 		$data->status = "OK";
-		$data->domainList = array(
-			array(
-				'domain' => 'foo.com',
-				'available' => 0
-			),
-			array(
-				'domain' => 'foo.com.au',
-				'available' => 1
-			)
-		);
+		$data->domainList = array($d1, $d2);
 
 		$response = new BulkCheckDomainResponse($data, 'BulkCheckDomainCommand');
 		$domains = $response->getAvailableDomains();
