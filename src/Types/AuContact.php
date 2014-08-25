@@ -1,5 +1,7 @@
 <?php  namespace SynergyWholesale\Types;
 
+use SynergyWholesale\Exception\InvalidArgumentException;
+
 class AuContact extends Contact
 {
 	protected $state;
@@ -11,7 +13,6 @@ class AuContact extends Contact
 		$address1, $address2, $address3,
 		$suburb,
 		AuState $state,
-		Country $country,
 		AuPostCode $postcode,
 		Phone $phone,
 		Email $email,
@@ -31,7 +32,7 @@ class AuContact extends Contact
 		$this->address3 = $address3;
 		$this->suburb = $suburb;
 		$this->state = $state;
-		$this->country = $country;
+		$this->country = new Country('AU');
 		$this->postcode = $postcode;
 		$this->phone = $phone;
 		$this->email = $email;
