@@ -1,7 +1,7 @@
 <?php namespace SynergyWholesale\Commands;
 
-use SynergyWholesale\Exception\InvalidArgumentException;
 use SynergyWholesale\Types\Domain;
+use SynergyWholesale\Exception\InvalidArgumentException;
 
 class BulkCheckDomainCommand implements Command
 {
@@ -9,6 +9,11 @@ class BulkCheckDomainCommand implements Command
 
 	public function __construct(array $domainList)
 	{
+		if (empty($domainList))
+		{
+			throw new InvalidArgumentException("Empty domain list passed to BulkCheckDomainCommand");
+		}
+
 		foreach ($domainList as $domain)
 		{
 			if (!$domain instanceof Domain)
