@@ -18,8 +18,8 @@ class UpdateDomainPasswordCommand implements Command
 	public function getRequestData()
 	{
 		return array(
-			'domainName' => $this->domain->getName(),
-			'newPassword' => $this->password->getPassword(),
+			'domainName' => strval($this->domain),
+			'newPassword' => strval($this->password)
 		);
 	}
 }
