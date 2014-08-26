@@ -6,7 +6,7 @@ class AuOrganisationType
 {
 	private $organisationType;
 
-	private static $organisationTypes = array(
+	public static $organisationTypes = array(
 		'Charity',
 		'Citizen/Resident',
 		'Club',
@@ -26,7 +26,7 @@ class AuOrganisationType
 		'Trademark'
 	);
 
-	function __construct($organisationType)
+	public function __construct($organisationType)
 	{
 		if (!in_array($organisationType, static::$organisationTypes))
 		{
