@@ -6,7 +6,7 @@ class AuIdType
 {
 	private $idType;
 
-	private static $idTypes = array(
+	public static $idTypes = array(
 		'ABN',
 		'ACN',
 		'ACT BN',
