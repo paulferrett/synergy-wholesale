@@ -32,7 +32,7 @@ class DomainInfoResponse extends Response
 			throw new BadDataException($message, $this->command, $this->response);
 		}
 
-		if ($domain->getgTld() == '.au')
+		if ($domain->getTopLevelDomain() == 'au')
 		{
 			if (!isset($this->response->auRegistrantID))
 			{
