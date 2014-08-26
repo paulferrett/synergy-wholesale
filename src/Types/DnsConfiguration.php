@@ -9,7 +9,7 @@ class DnsConfiguration
 	const PARKED = 3;
 	const DNS_HOSTING = 4;
 
-	private static $config_types = array(
+	public static $config_types = array(
 		self::CUSTOM_NAME_SERVERS => "CUSTOM_NAME_SERVERS",
 		self::EMAIL_WEB_FORWARDING => "EMAIL_WEB_FORWARDING",
 		self::PARKED => "PARKED",
