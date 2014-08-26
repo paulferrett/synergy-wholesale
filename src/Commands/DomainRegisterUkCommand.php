@@ -1,8 +1,8 @@
 <?php  namespace SynergyWholesale\Commands; 
 
 use Hampel\Validate\Validator;
-use SynergyWholesale\Types\Domain;
 use SynergyWholesale\Types\Contact;
+use SynergyWholesale\Types\UkDomain;
 use SynergyWholesale\Exception\InvalidArgumentException;
 
 class DomainRegisterUkCommand implements Command
@@ -16,7 +16,7 @@ class DomainRegisterUkCommand implements Command
 	protected $contact;
 
 	function __construct(
-		Domain $domainName,
+		UkDomain $domainName,
 		$years,
 		array $nameServers,
 		Contact $contact

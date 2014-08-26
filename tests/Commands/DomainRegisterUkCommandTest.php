@@ -2,15 +2,15 @@
 
 use SynergyWholesale\Types\Email;
 use SynergyWholesale\Types\Phone;
-use SynergyWholesale\Types\Domain;
 use SynergyWholesale\Types\Contact;
 use SynergyWholesale\Types\Country;
+use SynergyWholesale\Types\UkDomain;
 
 class DomainRegisterUkCommandTest extends \PHPUnit_Framework_TestCase
 {
 	public function setUp()
 	{
-		$this->domain = new Domain('example.co.uk');
+		$this->domain = new UkDomain('example.co.uk');
 		$this->contact = new Contact(
 			'foo',
 			'bar',
