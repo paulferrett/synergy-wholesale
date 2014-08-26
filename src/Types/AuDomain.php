@@ -1,7 +1,7 @@
 <?php  namespace SynergyWholesale\Types; 
 
 use Hampel\Validate\Validator;
-use SynergyWholesale\Exception\UnknownAuDomainException;
+use SynergyWholesale\Exception\InvalidArgumentException;
 
 class AuDomain extends Domain
 {
@@ -10,7 +10,7 @@ class AuDomain extends Domain
 		$validator = new Validator();
 		if (!$validator->isDomain($name, array('au')))
 		{
-			throw new UnknownAuDomainException("Invalid domain name [{$name}] - must be a .au domain");
+			throw new InvalidArgumentException("Invalid domain name [{$name}] - must be a .au domain");
 		}
 
 		parent::__construct($name);

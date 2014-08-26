@@ -4,9 +4,9 @@ class AuDomainTest extends \PHPUnit_Framework_TestCase {
 
 	public function testBadDomain()
 	{
-		$this->setExpectedException('SynergyWholesale\Exception\UnknownAuDomainException', 'Invalid domain name [example.com] - must be a .au domain');
+		$this->setExpectedException('SynergyWholesale\Exception\InvalidArgumentException', 'Invalid domain name [example.com] - must be a .au domain');
 
-		$domain = new AuDomain('example.com');
+		new AuDomain('example.com');
 	}
 
 	public function testDomain()
@@ -14,16 +14,24 @@ class AuDomainTest extends \PHPUnit_Framework_TestCase {
 		$domain = new AuDomain('example.com.au');
 
 		$this->assertEquals('example.com.au', $domain->getName());
-		$this->assertEquals('.com.au', $domain->getTld());
+		$this->assertEquals('example.com.au', strval($domain));
+		$this->assertEquals('au', $domain->getTld());
+		$this->assertEquals('com.au', $domain->getExtension());
 		$this->assertEquals('example', $domain->getBaseName());
 		$this->assertTrue($domain->isCcTld());
+		$this->assertTrue($domain->is2ld());
+		$this->assertFalse($domain->isSubDomain());
 
-		$domain = new AuDomain('example.net.au');
+		$domain = new AuDomain('www.example.net.au');
 
-		$this->assertEquals('example.net.au', $domain->getName());
-		$this->assertEquals('.net.au', $domain->getTld());
+		$this->assertEquals('www.example.net.au', $domain->getName());
+		$this->assertEquals('www.example.net.au', strval($domain));
+		$this->assertEquals('au', $domain->getTld());
+		$this->assertEquals('net.au', $domain->getExtension());
 		$this->assertEquals('example', $domain->getBaseName());
 		$this->assertTrue($domain->isCcTld());
+		$this->assertTrue($domain->is2ld());
+		$this->assertTrue($domain->isSubDomain());
 	}
 }
 
