@@ -4,7 +4,7 @@ use SynergyWholesale\Exception\UnknownCountryException;
 
 class Country
 {
-	private static $isocodes;
+	public static $isocodes;
 
 	private $countryCode;
 
