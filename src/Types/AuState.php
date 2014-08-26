@@ -6,12 +6,12 @@ class AuState
 {
 	private $state;
 
-	private $states = array('NSW', 'VIC', 'QLD', 'TAS', 'ACT', 'SA', 'WA', 'NT');
+	public static $states = array('NSW', 'VIC', 'QLD', 'TAS', 'ACT', 'SA', 'WA', 'NT');
 
 	public function __construct($state)
 	{
 		$state = strtoupper($state);
-		if (!in_array($state, $this->states))
+		if (!in_array($state, static::$states))
 		{
 			throw new UnknownStateException("Unknown state [{$state}]");
 		}
