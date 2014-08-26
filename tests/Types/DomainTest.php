@@ -14,18 +14,24 @@ class DomainTest extends \PHPUnit_Framework_TestCase {
 		$domain = new Domain('example.com');
 
 		$this->assertEquals('example.com', $domain->getName());
-		$this->assertEquals('.com', $domain->getTld());
-		$this->assertEquals('.com', $domain->getgTld());
+		$this->assertEquals('example.com', strval($domain));
+		$this->assertEquals('com', $domain->getTld());
+		$this->assertEquals('com', $domain->getExtension());
 		$this->assertEquals('example', $domain->getBaseName());
 		$this->assertFalse($domain->isCcTld());
+		$this->assertFalse($domain->is2ld());
+		$this->assertFalse($domain->isSubDomain());
 
-		$domain = new Domain('example.com.au');
+		$domain = new Domain('www.example.co.nz');
 
-		$this->assertEquals('example.com.au', $domain->getName());
-		$this->assertEquals('.com.au', $domain->getTld());
-		$this->assertEquals('.au', $domain->getgTld());
+		$this->assertEquals('www.example.co.nz', $domain->getName());
+		$this->assertEquals('www.example.co.nz', strval($domain));
+		$this->assertEquals('nz', $domain->getTld());
+		$this->assertEquals('co.nz', $domain->getExtension());
 		$this->assertEquals('example', $domain->getBaseName());
 		$this->assertTrue($domain->isCcTld());
+		$this->assertTrue($domain->is2ld());
+		$this->assertTrue($domain->isSubDomain());
 	}
 }
 
