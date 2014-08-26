@@ -6,7 +6,7 @@ class AuOrganisationTypeTest extends \PHPUnit_Framework_TestCase
 	{
 		$this->setExpectedException('SynergyWholesale\Exception\UnknownOrganisationTypeException', 'Unknown organisation type [foo]');
 
-		$org = new AuOrganisationType('foo');
+		new AuOrganisationType('foo');
 	}
 
 	public function testOrganisation()
