@@ -27,6 +27,11 @@ class Email
 	{
 		return $this->getEmail();
 	}
+
+	public function equals(Email $other)
+	{
+		return $this->email === $other->email;
+	}
 }
 
 ?>

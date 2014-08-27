@@ -38,6 +38,11 @@ class Country
 	{
 		return $this->getCountryName();
 	}
+
+	public function equals(Country $other)
+	{
+		return $this->countryCode === $other->countryCode;
+	}
 }
 
 ?>

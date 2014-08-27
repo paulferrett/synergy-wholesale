@@ -27,6 +27,11 @@ class AuState
 	{
 		return $this->getState();
 	}
+
+	public function equals(AuState $other)
+	{
+		return $this->state === $other->state;
+	}
 }
 
 ?>

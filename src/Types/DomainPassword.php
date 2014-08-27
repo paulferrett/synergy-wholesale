@@ -28,6 +28,11 @@ class DomainPassword
 	{
 		return $this->getPassword();
 	}
+
+	public function equals(DomainPassword $other)
+	{
+		return $this->password === $other->password;
+	}
 }
 
 ?>

@@ -6,7 +6,10 @@ class Bool
 
 	function __construct($bool)
 	{
-		if (is_bool($bool)) $this->bool = $bool;
+		if (is_bool($bool))
+		{
+			$this->bool = $bool;
+		}
 		elseif (
 			strcasecmp($bool, 'y') == 0 OR
 			strcasecmp($bool, 'yes') == 0 OR
@@ -15,7 +18,10 @@ class Bool
 			strcasecmp($bool, 'true') == 0 OR
 			strcasecmp($bool, 'enabled') == 0 OR
 			strcasecmp($bool, '1') == 0
-		) $this->bool = true;
+		)
+		{
+			$this->bool = true;
+		}
 		elseif (
 			strcasecmp($bool, 'n') == 0 OR
 			strcasecmp($bool, 'no') == 0 OR
@@ -25,7 +31,10 @@ class Bool
 			strcasecmp($bool, 'disabled') == 0 OR
 			strcasecmp($bool, '0') == 0
 		) $this->bool = false;
-		else $bool = (bool) $bool;
+		else
+		{
+			$this->bool = (bool) $bool;
+		}
 	}
 
 	public function getBool()
@@ -56,6 +65,11 @@ class Bool
 	public static function false()
 	{
 		return new static(false);
+	}
+
+	public function equals(Bool $other)
+	{
+		return $this->bool === $other->bool;
 	}
 }
 

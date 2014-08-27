@@ -12,17 +12,22 @@ class AuPostCode
 		{
 			throw new InvalidArgumentException("Invalid postcode [{$postcode}]");
 		}
-		$this->postcode = $postcode;
+		$this->postcode = strval($postcode);
 	}
 
 	public function getPostcode()
 	{
-		return strval($this->postcode);
+		return $this->postcode;
 	}
 
 	public function __toString()
 	{
 		return $this->getPostcode();
+	}
+
+	public function equals(AuPostCode $other)
+	{
+		return $this->postcode === $other->postcode;
 	}
 }
 

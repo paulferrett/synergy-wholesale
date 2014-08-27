@@ -105,6 +105,11 @@ class Domain
 		return $this->getName();
 	}
 
+	public function equals(Domain $other)
+	{
+		return $this->name === $other->name;
+	}
+
 	protected function getParts()
 	{
 		return explode('.', $this->name);

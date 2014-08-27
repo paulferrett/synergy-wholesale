@@ -55,6 +55,11 @@ class AuOrganisationType
 	{
 		return $this->getOrganisationType();
 	}
+
+	public function equals(AuOrganisationType $other)
+	{
+		return $this->organisationType === $other->organisationType;
+	}
 }
 
 ?>

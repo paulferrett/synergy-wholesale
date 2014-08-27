@@ -27,6 +27,11 @@ class Phone
 	{
 		return $this->getPhone();
 	}
+
+	public function equals(Phone $other)
+	{
+		return $this->phone === $other->phone;
+	}
 }
 
 ?>
