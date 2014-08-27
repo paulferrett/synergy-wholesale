@@ -63,7 +63,7 @@ class SynergyWholesale
 	 * @param string $reseller_id
 	 * @param string $api_key
 	 *
-*@return LinodeService a fully hydrated Linode Service, ready to run
+	 * @return SynergyWholesale a fully hydrated SynergyWholesale Service, ready to run
 	 */
 	public static function make($reseller_id, $api_key)
 	{
