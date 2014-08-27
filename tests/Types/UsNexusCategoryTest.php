@@ -13,13 +13,9 @@ class UsNexusCategoryTest extends \PHPUnit_Framework_TestCase
 	{
 		$nc = new UsNexusCategory('C11');
 		$this->assertEquals('C11', $nc->getNexusCategory());
-		$this->assertEquals('US Citizen', $nc->getNexusCategoryDescription());
-		$this->assertEquals('US Citizen', strval($nc));
-
-		$nc = new UsNexusCategory('C31');
-		$this->assertEquals('C31', $nc->getNexusCategory());
-		$this->assertEquals('Foreign organisation doing business in US', $nc->getNexusCategoryDescription());
-		$this->assertEquals('Foreign organisation doing business in US', strval($nc));
+		$this->assertEquals('C11', strval($nc));
+		$this->assertEquals(UsNexusCategory::US_CITIZEN, strval($nc));
+		$this->assertTrue($nc->equals(UsNexusCategory::US_CITIZEN()));
 	}
 }
 
