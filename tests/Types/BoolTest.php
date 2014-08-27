@@ -48,6 +48,9 @@ class BoolTest extends \PHPUnit_Framework_TestCase
 
 		$this->assertEquals('true', strval(Bool::true()));
 		$this->assertEquals('false', strval(Bool::false()));
+
+		$this->assertTrue(Bool::convert('yes'));
+		$this->assertFalse(Bool::convert('no'));
 	}
 }
 

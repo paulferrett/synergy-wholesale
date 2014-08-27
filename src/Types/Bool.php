@@ -30,7 +30,10 @@ class Bool
 			strcasecmp($bool, 'false') == 0 OR
 			strcasecmp($bool, 'disabled') == 0 OR
 			strcasecmp($bool, '0') == 0
-		) $this->bool = false;
+		)
+		{
+			$this->bool = false;
+		}
 		else
 		{
 			$this->bool = (bool) $bool;
@@ -55,6 +58,11 @@ class Bool
 	public function __toString()
 	{
 		return $this->isTrue() ? 'true' : 'false';
+	}
+
+	public static function convert($val)
+	{
+		return (new static($val))->getBool();
 	}
 
 	public static function true()
