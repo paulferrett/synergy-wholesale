@@ -6,7 +6,7 @@ class DomainTest extends \PHPUnit_Framework_TestCase {
 	{
 		$this->setExpectedException('SynergyWholesale\Exception\InvalidArgumentException', 'Invalid domain name [example]');
 
-		$domain = new Domain('example');
+		new Domain('example');
 	}
 
 	public function testDomain()
