@@ -1,14 +1,16 @@
 <?php  namespace SynergyWholesale\Commands; 
 
-use SynergyWholesale\Types\AuIdType;
 use SynergyWholesale\Types\Email;
 use SynergyWholesale\Types\Phone;
 use SynergyWholesale\Types\AuState;
 use SynergyWholesale\Types\AuDomain;
+use SynergyWholesale\Types\AuIdType;
 use SynergyWholesale\Types\AuContact;
 use SynergyWholesale\Types\AuPostCode;
+use SynergyWholesale\Types\DomainList;
 use SynergyWholesale\Types\AuRegistrant;
 use SynergyWholesale\Types\AuOrganisationType;
+use SynergyWholesale\Types\RegistrationYears;
 
 class DomainRegisterAuCommandTest extends \PHPUnit_Framework_TestCase
 {
@@ -49,76 +51,16 @@ class DomainRegisterAuCommandTest extends \PHPUnit_Framework_TestCase
 			new AuOrganisationType('Company'),
 			new AuIdType('ACN')
 		);
-	}
-
-	public function testBadYears()
-	{
-		$this->setExpectedException('SynergyWholesale\Exception\InvalidArgumentException', 'Years parameter is required and should be a positive integer value');
-
-		$command = new DomainRegisterAuCommand(
-			$this->domain,
-			null,
-			array(),
-			$this->contact1,
-			$this->contact2,
-			$this->registrant
-		);
-	}
-
-	public function testBadYears2()
-	{
-		$this->setExpectedException('SynergyWholesale\Exception\InvalidArgumentException', 'Years parameter is required and should be a positive integer value');
-
-		$command = new DomainRegisterAuCommand(
-			$this->domain,
-			-1,
-			array(),
-			$this->contact1,
-			$this->contact2,
-			$this->registrant
-		);
-	}
-
-	public function testBadYears3()
-	{
-		$this->setExpectedException('SynergyWholesale\Exception\InvalidArgumentException', 'Years parameter is required and should be a positive integer value');
-
-		$command = new DomainRegisterAuCommand(
-			$this->domain,
-			0,
-			array(),
-			$this->contact1,
-			$this->contact2,
-			$this->registrant
-		);
-	}
-
-	public function testBadNameServers()
-	{
-		$this->setExpectedException('SynergyWholesale\Exception\InvalidArgumentException', 'Name server is not a valid domain name [ns1]');
-
-		$command = new DomainRegisterAuCommand(
-			$this->domain,
-			1,
-			array(
-				'ns1',
-				'ns2'
-			),
-			$this->contact1,
-			$this->contact2,
-			$this->registrant
-		);
+		$this->years = new RegistrationYears(2);
+		$this->nameServers = new DomainList(array('ns1.foo.com', 'ns2.foo.com'));
 	}
 
 	public function testCommand()
 	{
 		$command = new DomainRegisterAuCommand(
 			$this->domain,
-			1,
-			array(
-				'ns1.foo.com',
-				'ns2.foo.com'
-			),
+			$this->years,
+			$this->nameServers,
 			$this->contact1,
 			$this->contact2,
 			$this->registrant
@@ -129,7 +71,7 @@ class DomainRegisterAuCommandTest extends \PHPUnit_Framework_TestCase
 		$this->assertArrayHasKey('domainName', $build);
 		$this->assertEquals('example.com.au', $build['domainName']);
 		$this->assertArrayHasKey('years', $build);
-		$this->assertEquals(1, $build['years']);
+		$this->assertEquals(2, $build['years']);
 		$this->assertArrayHasKey('nameServers', $build);
 		$this->assertTrue(is_array($build['nameServers']));
 		$this->assertArrayHasKey(0, $build['nameServers']);

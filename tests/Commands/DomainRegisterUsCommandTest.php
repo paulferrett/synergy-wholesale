@@ -5,8 +5,10 @@ use SynergyWholesale\Types\Phone;
 use SynergyWholesale\Types\Contact;
 use SynergyWholesale\Types\Country;
 use SynergyWholesale\Types\UsDomain;
+use SynergyWholesale\Types\DomainList;
 use SynergyWholesale\Types\UsAppPurpose;
 use SynergyWholesale\Types\UsNexusCategory;
+use SynergyWholesale\Types\RegistrationYears;
 
 class DomainRegisterUsCommandTest extends \PHPUnit_Framework_TestCase
 {
@@ -30,76 +32,16 @@ class DomainRegisterUsCommandTest extends \PHPUnit_Framework_TestCase
 		);
 		$this->appPurpose = new UsAppPurpose('P1');
 		$this->nexusCategory = new UsNexusCategory('C31');
-	}
-
-	public function testBadYears()
-	{
-		$this->setExpectedException('SynergyWholesale\Exception\InvalidArgumentException', 'Years parameter is required and should be a positive integer value');
-
-		$command = new DomainRegisterUsCommand(
-			$this->domain,
-			null,
-			array(),
-			$this->contact,
-			$this->appPurpose,
-			$this->nexusCategory
-		);
-	}
-
-	public function testBadYears2()
-	{
-		$this->setExpectedException('SynergyWholesale\Exception\InvalidArgumentException', 'Years parameter is required and should be a positive integer value');
-
-		$command = new DomainRegisterUsCommand(
-			$this->domain,
-			-1,
-			array(),
-			$this->contact,
-			$this->appPurpose,
-			$this->nexusCategory
-		);
-	}
-
-	public function testBadYears3()
-	{
-		$this->setExpectedException('SynergyWholesale\Exception\InvalidArgumentException', 'Years parameter is required and should be a positive integer value');
-
-		$command = new DomainRegisterUsCommand(
-			$this->domain,
-			0,
-			array(),
-			$this->contact,
-			$this->appPurpose,
-			$this->nexusCategory
-		);
-	}
-
-	public function testBadNameServers()
-	{
-		$this->setExpectedException('SynergyWholesale\Exception\InvalidArgumentException', 'Name server is not a valid domain name [ns1]');
-
-		$command = new DomainRegisterUsCommand(
-			$this->domain,
-			1,
-			array(
-				'ns1',
-				'ns2'
-			),
-			$this->contact,
-			$this->appPurpose,
-			$this->nexusCategory
-);
+		$this->years = new RegistrationYears(1);
+		$this->nameServers = new DomainList(array('ns1.foo.com', 'ns2.foo.com'));
 	}
 
 	public function testCommand()
 	{
 		$command = new DomainRegisterUsCommand(
 			$this->domain,
-			1,
-			array(
-				'ns1.foo.com',
-				'ns2.foo.com'
-			),
+			$this->years,
+			$this->nameServers,
 			$this->contact,
 			$this->appPurpose,
 			$this->nexusCategory

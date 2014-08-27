@@ -2,6 +2,8 @@
 
 use Hampel\Validate\Validator;
 use SynergyWholesale\Types\Contact;
+use SynergyWholesale\Types\DomainList;
+use SynergyWholesale\Types\RegistrationYears;
 use SynergyWholesale\Types\UkDomain;
 use SynergyWholesale\Exception\InvalidArgumentException;
 
@@ -17,29 +19,11 @@ class DomainRegisterUkCommand implements Command
 
 	function __construct(
 		UkDomain $domainName,
-		$years,
-		array $nameServers,
+		RegistrationYears $years,
+		DomainList $nameServers,
 		Contact $contact
 	)
 	{
-		if (empty($years) OR !is_integer($years) OR $years < 1)
-		{
-			throw new InvalidArgumentException("Years parameter is required and should be a positive integer value");
-		}
-
-		if (!empty($nameServers))
-		{
-			$validator = new Validator();
-
-			foreach ($nameServers as $ns)
-			{
-				if (!$validator->isDomain($ns, $validator->getTlds()))
-				{
-					throw new InvalidArgumentException("Name server is not a valid domain name [{$ns}]");
-				}
-			}
-		}
-
 		$this->domainName = $domainName;
 		$this->years = $years;
 		$this->nameServers = $nameServers;
@@ -50,8 +34,8 @@ class DomainRegisterUkCommand implements Command
 	{
 		return array(
 			'domainName' => $this->domainName->getName(),
-			'years' => $this->years,
-			'nameServers' => $this->nameServers,
+			'years' => $this->years->getYears(),
+			'nameServers' => $this->nameServers->getDomainNames(),
 
 			'contact_firstname' => $this->contact->getFirstname(),
 			'contact_lastname' => $this->contact->getLastname(),

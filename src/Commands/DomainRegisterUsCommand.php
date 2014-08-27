@@ -3,9 +3,10 @@
 use Hampel\Validate\Validator;
 use SynergyWholesale\Types\Contact;
 use SynergyWholesale\Types\UsDomain;
+use SynergyWholesale\Types\DomainList;
 use SynergyWholesale\Types\UsAppPurpose;
 use SynergyWholesale\Types\UsNexusCategory;
-use SynergyWholesale\Exception\InvalidArgumentException;
+use SynergyWholesale\Types\RegistrationYears;
 
 class DomainRegisterUsCommand implements Command
 {
@@ -23,31 +24,13 @@ class DomainRegisterUsCommand implements Command
 
 	function __construct(
 		UsDomain $domainName,
-		$years,
-		array $nameServers,
+		RegistrationYears $years,
+		DomainList $nameServers,
 		Contact $contact,
 		UsAppPurpose $appPurpose,
 		UsNexusCategory $nexusCategory
 	)
 	{
-		if (empty($years) OR !is_integer($years) OR $years < 1)
-		{
-			throw new InvalidArgumentException("Years parameter is required and should be a positive integer value");
-		}
-
-		if (!empty($nameServers))
-		{
-			$validator = new Validator();
-
-			foreach ($nameServers as $ns)
-			{
-				if (!$validator->isDomain($ns, $validator->getTlds()))
-				{
-					throw new InvalidArgumentException("Name server is not a valid domain name [{$ns}]");
-				}
-			}
-		}
-
 		$this->domainName = $domainName;
 		$this->years = $years;
 		$this->nameServers = $nameServers;
@@ -60,8 +43,8 @@ class DomainRegisterUsCommand implements Command
 	{
 		return array(
 			'domainName' => $this->domainName->getName(),
-			'years' => $this->years,
-			'nameServers' => $this->nameServers,
+			'years' => $this->years->getYears(),
+			'nameServers' => $this->nameServers->getDomainNames(),
 
 			'contact_firstname' => $this->contact->getFirstname(),
 			'contact_lastname' => $this->contact->getLastname(),

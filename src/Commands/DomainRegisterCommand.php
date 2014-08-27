@@ -4,7 +4,8 @@ use Hampel\Validate\Validator;
 use SynergyWholesale\Types\Bool;
 use SynergyWholesale\Types\Domain;
 use SynergyWholesale\Types\Contact;
-use SynergyWholesale\Exception\InvalidArgumentException;
+use SynergyWholesale\Types\DomainList;
+use SynergyWholesale\Types\RegistrationYears;
 
 class DomainRegisterCommand implements Command
 {
@@ -26,8 +27,8 @@ class DomainRegisterCommand implements Command
 
 	function __construct(
 		Domain $domainName,
-		$years,
-		array $nameServers,
+		RegistrationYears $years,
+		DomainList $nameServers,
 		Bool $idProtect,
 		Contact $registrant_contact,
 		Contact $billing_contact,
@@ -35,24 +36,6 @@ class DomainRegisterCommand implements Command
 		Contact $technical_contact
 	)
 	{
-		if (empty($years) OR !is_integer($years) OR $years < 1)
-		{
-			throw new InvalidArgumentException("Years parameter is required and should be a positive integer value");
-		}
-
-		if (!empty($nameServers))
-		{
-			$validator = new Validator();
-
-			foreach ($nameServers as $ns)
-			{
-				if (!$validator->isDomain($ns, $validator->getTlds()))
-				{
-					throw new InvalidArgumentException("Name server is not a valid domain name [{$ns}]");
-				}
-			}
-		}
-
 		$this->domainName = $domainName;
 		$this->years = $years;
 		$this->nameServers = $nameServers;
@@ -67,8 +50,8 @@ class DomainRegisterCommand implements Command
 	{
 		return array(
 			'domainName' => $this->domainName->getName(),
-			'years' => $this->years,
-			'nameServers' => $this->nameServers,
+			'years' => $this->years->getYears(),
+			'nameServers' => $this->nameServers->getDomainNames(),
 			'idProtect' => $this->idProtect->isTrue() ? 'Y' : '',
 
 			'registrant_firstname' => $this->registrant_contact->getFirstname(),

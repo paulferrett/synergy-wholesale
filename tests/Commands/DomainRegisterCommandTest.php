@@ -6,6 +6,8 @@ use SynergyWholesale\Types\Phone;
 use SynergyWholesale\Types\Domain;
 use SynergyWholesale\Types\Contact;
 use SynergyWholesale\Types\Country;
+use SynergyWholesale\Types\DomainList;
+use SynergyWholesale\Types\RegistrationYears;
 
 class DomainRegisterCommandTest extends \PHPUnit_Framework_TestCase
 {
@@ -28,84 +30,16 @@ class DomainRegisterCommandTest extends \PHPUnit_Framework_TestCase
 			new Phone('+61.111111112')
 		);
 		$this->idProtect = Bool::false();
-	}
-
-	public function testBadYears()
-	{
-		$this->setExpectedException('SynergyWholesale\Exception\InvalidArgumentException', 'Years parameter is required and should be a positive integer value');
-
-		$command = new DomainRegisterCommand(
-			$this->domain,
-			null,
-			array(),
-			$this->idProtect,
-			$this->contact,
-			$this->contact,
-			$this->contact,
-			$this->contact
-		);
-	}
-
-	public function testBadYears2()
-	{
-		$this->setExpectedException('SynergyWholesale\Exception\InvalidArgumentException', 'Years parameter is required and should be a positive integer value');
-
-		$command = new DomainRegisterCommand(
-			$this->domain,
-			-1,
-			array(),
-			$this->idProtect,
-			$this->contact,
-			$this->contact,
-			$this->contact,
-			$this->contact
-		);
-	}
-
-	public function testBadYears3()
-	{
-		$this->setExpectedException('SynergyWholesale\Exception\InvalidArgumentException', 'Years parameter is required and should be a positive integer value');
-
-		$command = new DomainRegisterCommand(
-			$this->domain,
-			0,
-			array(),
-			$this->idProtect,
-			$this->contact,
-			$this->contact,
-			$this->contact,
-			$this->contact
-		);
-	}
-
-	public function testBadNameServers()
-	{
-		$this->setExpectedException('SynergyWholesale\Exception\InvalidArgumentException', 'Name server is not a valid domain name [ns1]');
-
-		$command = new DomainRegisterCommand(
-			$this->domain,
-			1,
-			array(
-				'ns1',
-				'ns2'
-			),
-			$this->idProtect,
-			$this->contact,
-			$this->contact,
-			$this->contact,
-			$this->contact
-		);
+		$this->years = new RegistrationYears(1);
+		$this->nameServers = new DomainList(array('ns1.foo.com', 'ns2.foo.com'));
 	}
 
 	public function testCommand()
 	{
 		$command = new DomainRegisterCommand(
 			$this->domain,
-			1,
-			array(
-				'ns1.foo.com',
-				'ns2.foo.com'
-			),
+			$this->years,
+			$this->nameServers,
 			Bool::true(),
 			$this->contact,
 			$this->contact,
