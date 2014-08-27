@@ -23,7 +23,7 @@ class AuIdType
 
 	public function __construct($idType)
 	{
-		if (!in_array($idType, static::$idTypes))
+		if (!in_array($idType, self::$idTypes))
 		{
 			throw new UnknownIdTypeException("Unknown id type [{$idType}]");
 		}
@@ -31,28 +31,28 @@ class AuIdType
 		$this->idType = $idType;
 	}
 
-	public static function newFromState(AuState $state)
+	public static function createFromState(AuState $state)
 	{
 		$state = $state->getState();
 		return new static("{$state} BN");
 	}
 
-	public static function newAbn()
+	public static function ABN()
 	{
 		return new static('ABN');
 	}
 
-	public static function newAcn()
+	public static function ACN()
 	{
 		return new static('ACN');
 	}
 
-	public static function newTm()
+	public static function TM()
 	{
 		return new static('TM');
 	}
 
-	public static function newOther()
+	public static function OTHER()
 	{
 		return new static('OTHER');
 	}
@@ -65,6 +65,11 @@ class AuIdType
 	public function __toString()
 	{
 		return $this->getIdType();
+	}
+
+	public function equals(AuIdType $other)
+	{
+		return $this->idType === $other->idType;
 	}
 }
 

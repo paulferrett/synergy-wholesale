@@ -6,7 +6,7 @@ class AuIdTypeTest extends \PHPUnit_Framework_TestCase
 	{
 		$this->setExpectedException('SynergyWholesale\Exception\UnknownIdTypeException', 'Unknown id type [foo]');
 
-		$idtype = new AuIdType('foo');
+		new AuIdType('foo');
 	}
 
 	public function testIdType()
@@ -14,12 +14,17 @@ class AuIdTypeTest extends \PHPUnit_Framework_TestCase
 		$id = new AuIdType('ABN');
 		$this->assertEquals('ABN', $id->getIdType());
 		$this->assertEquals('ABN', strval($id));
+		$this->assertTrue($id->equals(AuIdType::ABN()));
 
-		$id = AuIdType::newAcn();
+		$id = AuIdType::ACN();
 		$this->assertEquals('ACN', $id->getIdType());
+		$this->assertFalse($id->equals(AuIdType::ABN()));
+
+		$id = AuIdType::OTHER();
+		$this->assertEquals('OTHER', $id->getIdType());
 
 		$state = new AuState('NSW');
-		$id = AuIdType::newFromState($state);
+		$id = AuIdType::createFromState($state);
 		$this->assertEquals('NSW BN', $id->getIdType());
 	}
 }
