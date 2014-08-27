@@ -13,13 +13,9 @@ class UsAppPurposeTest extends \PHPUnit_Framework_TestCase
 	{
 		$ap = new UsAppPurpose('P1');
 		$this->assertEquals('P1', $ap->getAppPurpose());
-		$this->assertEquals('Business for profit', $ap->getAppPurposeDescription());
-		$this->assertEquals('Business for profit', strval($ap));
-
-		$ap = new UsAppPurpose('P4');
-		$this->assertEquals('P4', $ap->getAppPurpose());
-		$this->assertEquals('Educational', $ap->getAppPurposeDescription());
-		$this->assertEquals('Educational', strval($ap));
+		$this->assertEquals('P1', strval($ap));
+		$this->assertEquals(UsAppPurpose::BUSINESS_FOR_PROFIT, strval($ap));
+		$this->assertTrue($ap->equals(UsAppPurpose::BUSINESS()));
 	}
 }
 
