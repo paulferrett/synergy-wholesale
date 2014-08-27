@@ -1,5 +1,6 @@
 <?php  namespace SynergyWholesale\Types; 
 
+use ReflectionClass;
 use SynergyWholesale\Exception\UnknownDnsConfigurationException;
 
 class DnsConfiguration
@@ -9,18 +10,18 @@ class DnsConfiguration
 	const PARKED = 3;
 	const DNS_HOSTING = 4;
 
-	public static $config_types = array(
-		self::CUSTOM_NAME_SERVERS => "CUSTOM_NAME_SERVERS",
-		self::EMAIL_WEB_FORWARDING => "EMAIL_WEB_FORWARDING",
-		self::PARKED => "PARKED",
-		self::DNS_HOSTING => "DNS_HOSTING"
-	);
+	private static $constants;
 
 	private $config;
 
 	public function __construct($config)
 	{
-		if (!array_key_exists($config, self::$config_types))
+		if (!isset(static::$constants))
+		{
+			static::$constants = (new ReflectionClass(get_called_class()))->getConstants();
+		}
+
+		if (!in_array($config, array_values(static::$constants)))
 		{
 			throw new UnknownDnsConfigurationException("Unknown DNS Configuration [{$config}]");
 		}
@@ -32,29 +33,34 @@ class DnsConfiguration
 		return $this->config;
 	}
 
-	public function getConfigName()
+	public function __toString()
 	{
-		return self::$config_types[$this->config];
+		return strval($this->config);
 	}
 
-	public static function custom()
+	public static function CUSTOM()
 	{
 		return new static(self::CUSTOM_NAME_SERVERS);
 	}
 
-	public static function forwarding()
+	public static function FORWARDING()
 	{
 		return new static(self::EMAIL_WEB_FORWARDING);
 	}
 
-	public static function parked()
+	public static function PARKED()
 	{
 		return new static(self::PARKED);
 	}
 
-	public static function hosting()
+	public static function HOSTING()
 	{
 		return new static(self::DNS_HOSTING);
+	}
+
+	public function equals(DnsConfiguration $other)
+	{
+		return $this->config === $other->config;
 	}
 }
 
