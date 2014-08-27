@@ -12,11 +12,6 @@ class BusinessCheckRegistrationResponse extends Response
 		'entityStatus', 'entityName',
 	);
 
-	protected function validateData()
-	{
-
-	}
-
 	public function getRegistrationNumber()
 	{
 		if (isset($this->response->registrationNumber))

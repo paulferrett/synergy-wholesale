@@ -1,7 +1,5 @@
 <?php namespace SynergyWholesale\Commands;
 
-use stdClass;
-
 class BalanceQueryCommandTest extends \PHPUnit_Framework_TestCase
 {
 	public function testGetRequestData()
