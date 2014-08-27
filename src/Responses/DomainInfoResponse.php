@@ -1,5 +1,6 @@
 <?php  namespace SynergyWholesale\Responses;
 
+use SynergyWholesale\Types\Bool;
 use SynergyWholesale\Types\Domain;
 use SynergyWholesale\Types\DnsConfiguration;
 use SynergyWholesale\Exception\BadDataException;
@@ -94,17 +95,17 @@ class DomainInfoResponse extends Response
 
 	public function isBulkInProgress()
 	{
-		return $this->response->bulkInProgress == 1 ? true : false;
+		return Bool::convert($this->response->bulkInProgress);
 	}
 
 	public function isIdProtected()
 	{
-		return $this->response->idProtect == 'Enabled' ? true : false;
+		return Bool::convert($this->response->idProtect);
 	}
 
 	public function isAutoRenewEnabled()
 	{
-		return $this->response->autoRenew == 'on' ? true : false;
+		return Bool::convert($this->response->autoRenew);
 	}
 
 	public function getAuRegistrantIdType()
