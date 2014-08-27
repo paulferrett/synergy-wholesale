@@ -67,13 +67,13 @@ class AuRegistrant
 			$registrantIdType = null;
 			$eligibilityName = $registration->getEntityName();
 			$eligibilityId = $registration->getRegistrationNumber();
-			$eligibilityIdType = AuIdType::newFromState($registration->getState());
+			$eligibilityIdType = AuIdType::createFromState($registration->getState());
 		}
 		elseif ($eligibilityType->isCompany())
 		{
 			$registrantName = $registration->getEntityName();
 			$registrantId = $registration->getRegistrationNumber();
-			$registrantIdType = strlen($registrantId) < 11 ? AuIdType::newAcn() : AuIdType::newAbn();
+			$registrantIdType = strlen($registrantId) < 11 ? AuIdType::ACN() : AuIdType::ABN();
 			$eligibilityName = null;
 			$eligibilityId = null;
 			$eligibilityIdType = null;
