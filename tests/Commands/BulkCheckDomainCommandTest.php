@@ -1,31 +1,16 @@
 <?php namespace SynergyWholesale\Commands;
 
 use SynergyWholesale\Types\Domain;
+use SynergyWholesale\Types\DomainList;
 
 class BulkCheckDomainCommandTest extends \PHPUnit_Framework_TestCase
 {
-	public function testNoDomainArray()
-	{
-		$this->setExpectedException('SynergyWholesale\Exception\InvalidArgumentException', 'Empty domain list passed to BulkCheckDomainCommand');
-
-		$list = array();
-		$command = new BulkCheckDomainCommand($list);
-	}
-
-	public function testBadDomainArray()
-	{
-		$this->setExpectedException('SynergyWholesale\Exception\InvalidArgumentException', 'BulkCheckDomainCommand expects an array of SynergyWholesale\Types\Domain objects');
-
-		$list = array('foo', 'bar');
-		$command = new BulkCheckDomainCommand($list);
-	}
-
 	public function testGetRequestData()
 	{
-		$list = array(
-			new Domain('example.com'),
+		$list = new DomainList(array(
+			'example.com',
 			new Domain('example.net')
-		);
+		));
 
 		$command = new BulkCheckDomainCommand($list);
 		$build = $command->getRequestData();
