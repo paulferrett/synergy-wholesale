@@ -7,19 +7,19 @@ class UpdateDomainPasswordCommand implements Command
 {
 	protected $domain;
 
-	protected $password;
+	protected $newPassword;
 
-	public function __construct(Domain $domain, DomainPassword $password)
+	public function __construct(Domain $domain, DomainPassword $newPassword)
 	{
 		$this->domain = $domain;
-		$this->password = $password;
+		$this->newPassword = $newPassword;
 	}
 
 	public function getRequestData()
 	{
 		return array(
 			'domainName' => strval($this->domain),
-			'newPassword' => strval($this->password)
+			'newPassword' => strval($this->newPassword)
 		);
 	}
 }
