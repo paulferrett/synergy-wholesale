@@ -16,11 +16,13 @@ class DomainInfoResponse extends Response
 		'autoRenew', 'icannStatus', 'icannVerificationDateEnd'
 	);
 
+	protected $domain;
+
 	protected function validateData()
 	{
 		try
 		{
-			$domain = new Domain($this->response->domainName);
+			$this->domain = new Domain($this->response->domainName);
 		}
 		catch (InvalidArgumentException $e)
 		{
@@ -33,7 +35,7 @@ class DomainInfoResponse extends Response
 			throw new BadDataException($message, $this->command, $this->response);
 		}
 
-		if ($domain->getTopLevelDomain() == 'au')
+		if ($this->domain->getTopLevelDomain() == 'au')
 		{
 			if (!isset($this->response->auRegistrantID))
 			{
@@ -56,6 +58,11 @@ class DomainInfoResponse extends Response
 		{
 			throw new BadDataException($e->getMessage(), $this->command, $this->response);
 		}
+	}
+
+	public function getDomain()
+	{
+		return $this->domain;
 	}
 
 	public function getDomainName()

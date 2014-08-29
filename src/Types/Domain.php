@@ -42,7 +42,8 @@ class Domain
 
 	public function getTopLevelDomain()
 	{
-		return array_pop($this->getParts());
+		$parts = $this->getParts();
+		return array_pop($parts);
 	}
 
 	public function getTld()
