@@ -67,6 +67,11 @@ abstract class Response
 	{
 		return; // do nothing by default - let subclasses provide their own implementation if they choose
 	}
+
+	public function getRawResponse()
+	{
+		return $this->response;
+	}
 }
 
 ?>
