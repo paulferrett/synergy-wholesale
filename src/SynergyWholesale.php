@@ -11,8 +11,8 @@ use SynergyWholesale\Exception\BadDataException;
 
 class SynergyWholesale
 {
-	/** @var string base url for API calls */
-	protected static $base_url = 'https://api.synergywholesale.com';
+	/** URL for the Soap WSDL file */
+	const WSDL_URL = 'https://api.synergywholesale.com/?wsdl';
 
 	/** @var string reseller id provided by Synergy Wholesale */
 	protected $reseller_id;
@@ -67,7 +67,7 @@ class SynergyWholesale
 	 */
 	public static function make($reseller_id, $api_key)
 	{
-		$config = array('location' => self::$base_url . "?wsdl", 'uri' => '');
+		$config = array('location' => self::WSDL_URL, 'uri' => '');
 
 		$client = new SoapClient(null, $config);
 		$responseGenerator = new BasicResponseGenerator();
