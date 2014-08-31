@@ -173,6 +173,200 @@ class SynergyWholesale
 		}
 	}
 
+	/**
+	 * @param Commands\BalanceQueryCommand $command
+	 * @return Responses\BalanceQueryResponse
+	 */
+	public function balanceQuery(Commands\BalanceQueryCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\BulkCheckDomainCommand $command
+	 * @return Responses\BulkCheckDomainResponse
+	 */
+	public function bulkCheckDomain(Commands\BulkCheckDomainCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\BusinessCheckRegistrationCommand $command
+	 * @return Responses\BusinessCheckRegistrationResponse
+	 */
+	public function businessCheckRegistration(Commands\BusinessCheckRegistrationCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\CanRenewDomainCommand $command
+	 * @return Responses\CanRenewDomainResponse
+	 */
+	public function canRenewDomain(Commands\CanRenewDomainCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\CheckDomainCommand $command
+	 * @return Responses\CheckDomainResponse
+	 */
+	public function checkDomain(Commands\CheckDomainCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\DetermineSmsCostCommand $command
+	 * @return Responses\DetermineSmsCostResponse
+	 */
+	public function determineSmsCost(Commands\DetermineSmsCostCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\DisableAutoRenewalCommand $command
+	 * @return Responses\DisableAutoRenewalResponse
+	 */
+	public function disableAutoRenewal(Commands\DisableAutoRenewalCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\DisableIdProtectionCommand $command
+	 * @return Responses\DisableIdProtectionResponse
+	 */
+	public function disableIdProtection(Commands\DisableIdProtectionCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\DomainInfoCommand $command
+	 * @return Responses\DomainInfoResponse
+	 */
+	public function domainInfo(Commands\DomainInfoCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\DomainRegisterAuCommand $command
+	 * @return Responses\DomainRegisterAuResponse
+	 */
+	public function domainRegisterAu(Commands\DomainRegisterAuCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\DomainRegisterCommand $command
+	 * @return Responses\DomainRegisterResponse
+	 */
+	public function domainRegister(Commands\DomainRegisterCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\DomainRegisterUkCommand $command
+	 * @return Responses\DomainRegisterUkResponse
+	 */
+	public function domainRegisterUk(Commands\DomainRegisterUkCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\DomainRegisterUsCommand $command
+	 * @return Responses\DomainRegisterUsResponse
+	 */
+	public function domainRegisterUs(Commands\DomainRegisterUsCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\DomainReleaseUkCommand $command
+	 *
+	 * @return Responses\DomainReleaseUkResponse
+	 */
+	public function domainReleaseUk(Commands\DomainReleaseUkCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\DomainTransferUkCommand $command
+	 * @return Responses\DomainTransferUkResponse
+	 */
+	public function domainTransferUk(Commands\DomainTransferUkCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\EnableAutoRenewalCommand $command
+	 * @return Responses\EnableAutoRenewalResponse
+	 */
+	public function enableAutoRenewal(Commands\EnableAutoRenewalCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\EnableIdProtectionCommand $command
+	 * @return Responses\EnableIdProtectionResponse
+	 */
+	public function enableIdProtection(Commands\EnableIdProtectionCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\GetDomainExtensionOptionsCommand $command
+	 * @return Responses\GetDomainExtensionOptionsResponse
+	 */
+	public function getDomainExtensionOptions(Commands\GetDomainExtensionOptionsCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\GetTransferredAwayDomainsCommand $command
+	 * @return Responses\GetTransferredAwayDomainsResponse
+	 */
+	public function getTransferredAwayDomains(Commands\GetTransferredAwayDomainsCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\GetUsNexusDataCommand $command
+	 * @return Responses\GetUsNexusDataResponse
+	 */
+	public function getUsNexusData(Commands\GetUsNexusDataCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\InitiateAuCorCommand $command
+	 * @return Responses\InitiateAuCorResponse
+	 */
+	public function initiateAuCor(Commands\InitiateAuCorCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\ListContactsCommand $command
+	 * @return Responses\ListContactsResponse
+	 */
+	public function listContacts(Commands\ListContactsCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\LockDomainCommand $command
+	 * @return Responses\LockDomainResponse
+	 */
+	public function lockDomain(Commands\LockDomainCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\RenewDomainCommand $command
+	 * @return Responses\RenewDomainResponse
+	 */
+	public function renewDomain(Commands\RenewDomainCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\ResendTransferEmailCommand $command
+	 * @return Responses\ResendTransferEmailResponse
+	 */
+	public function resendTransferEmail(Commands\ResendTransferEmailCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\ResubmitFailedTransferCommand $command
+	 * @return Responses\ResubmitFailedTransferResponse
+	 */
+	public function resubmitFailedTransfer(Commands\ResubmitFailedTransferCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\SendSmsCommand $command
+	 * @return Responses\SendSmsResponse
+	 */
+	public function sendSms(Commands\SendSmsCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\TransferDomainCommand $command
+	 * @return Responses\TransferDomainResponse
+	 */
+	public function transferDomain(Commands\TransferDomainCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\UnlockDomainCommand $command
+	 * @return Responses\UnlockDomainResponse
+	 */
+	public function unlockDomain(Commands\UnlockDomainCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\UpdateContactCommand $command
+	 * @return Responses\UpdateContactResponse
+	 */
+	public function updateContact(Commands\UpdateContactCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\UpdateDomainPasswordCommand $command
+	 * @return Responses\UpdateDomainPasswordResponse
+	 */
+	public function updateDomainPassword(Commands\UpdateDomainPasswordCommand $command) { return $this->execute($command); }
+
+	/**
+	 * @param Commands\UpdateNameServersCommand $command
+	 * @return Responses\UpdateNameServersResponse
+	 */
+	public function updateNameServers(Commands\UpdateNameServersCommand $command) { return $this->execute($command); }
+
+
 	protected function logCommand($soapCommand, array $options)
 	{
 		if (array_key_exists('resellerID', $options)) $options['resellerID'] = '*****';
