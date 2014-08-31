@@ -10,16 +10,22 @@ use SynergyWholesale\Types\RegistrationYears;
 
 class DomainRegisterUsCommand implements Command
 {
+	/** @var \SynergyWholesale\Types\UsDomain */
 	protected $domainName;
 
+	/** @var \SynergyWholesale\Types\RegistrationYears */
 	protected $years;
 
+	/** @var \SynergyWholesale\Types\DomainList */
 	protected $nameServers;
 
+	/** @var \SynergyWholesale\Types\Contact */
 	protected $contact;
 
+	/** @var \SynergyWholesale\Types\UsAppPurpose */
 	protected $appPurpose;
 
+	/** @var \SynergyWholesale\Types\UsNexusCategory */
 	protected $nexusCategory;
 
 	function __construct(

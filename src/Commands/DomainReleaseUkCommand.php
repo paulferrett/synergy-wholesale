@@ -4,8 +4,10 @@ use SynergyWholesale\Types\UkDomain;
 
 class DomainReleaseUkCommand implements Command
 {
+	/** @var \SynergyWholesale\Types\UkDomain */
 	protected $domain;
 
+	/** @var string $tagName */
 	protected $tagName;
 
 	public function __construct(UkDomain $domain, $tagName)

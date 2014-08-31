@@ -5,8 +5,10 @@ use SynergyWholesale\Exception\CommandException;
 
 class BusinessCheckRegistrationCommand implements Command
 {
+	/** @var string $registrationNumber */
 	protected $registrationNumber;
 
+	/** @var \SynergyWholesale\Types\AuState $registrationState */
 	protected $registrationState;
 
 	public function __construct($registrationNumber, AuState $registrationState = null)

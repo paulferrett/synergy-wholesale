@@ -9,12 +9,16 @@ use SynergyWholesale\Exception\InvalidArgumentException;
 
 class DomainRegisterUkCommand implements Command
 {
+	/** @var \SynergyWholesale\Types\UkDomain */
 	protected $domainName;
 
+	/** @var \SynergyWholesale\Types\RegistrationYears */
 	protected $years;
 
+	/** @var \SynergyWholesale\Types\DomainList */
 	protected $nameServers;
 
+	/** @var \SynergyWholesale\Types\Contact */
 	protected $contact;
 
 	function __construct(

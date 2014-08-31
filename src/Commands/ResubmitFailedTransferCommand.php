@@ -4,8 +4,10 @@ use SynergyWholesale\Types\Domain;
 
 class ResubmitFailedTransferCommand implements Command
 {
-	protected $domainName;
+	/** @var \SynergyWholesale\Types\Domain */
+	protected $domain;
 
+	/** @var string */
 	protected $newPassword;
 
 	public function __construct(Domain $domain, $newPassword)

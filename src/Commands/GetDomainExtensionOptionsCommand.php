@@ -5,6 +5,7 @@ use SynergyWholesale\Exception\InvalidArgumentException;
 
 class GetDomainExtensionOptionsCommand implements Command
 {
+	/** @var string $tld */
 	protected $tld;
 
 	function __construct($tld)

@@ -9,20 +9,28 @@ use SynergyWholesale\Types\RegistrationYears;
 
 class DomainRegisterCommand implements Command
 {
+	/** @var \SynergyWholesale\Types\Domain */
 	protected $domainName;
 
+	/** @var \SynergyWholesale\Types\RegistrationYears */
 	protected $years;
 
+	/** @var \SynergyWholesale\Types\DomainList */
 	protected $nameServers;
 
+	/** @var \SynergyWholesale\Types\Bool */
 	protected $idProtect;
 
+	/** @var \SynergyWholesale\Types\Contact */
 	protected $registrant_contact;
 
+	/** @var \SynergyWholesale\Types\Contact */
 	protected $billing_contact;
 
+	/** @var \SynergyWholesale\Types\Contact */
 	protected $admin_contact;
 
+	/** @var \SynergyWholesale\Types\Contact */
 	protected $technical_contact;
 
 	function __construct(

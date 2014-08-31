@@ -7,10 +7,13 @@ use SynergyWholesale\Types\DnsConfiguration;
 
 class UpdateNameServersCommand implements Command
 {
+	/** @var \SynergyWholesale\Types\Domain */
 	protected $domainName;
 
+	/** @var \SynergyWholesale\Types\DomainList */
 	protected $nameServers;
 
+	/** @var \SynergyWholesale\Types\DnsConfiguration */
 	protected $dnsConfigType;
 
 	function __construct(

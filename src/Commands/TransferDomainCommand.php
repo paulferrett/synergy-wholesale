@@ -8,14 +8,19 @@ use SynergyWholesale\Exception\InvalidArgumentException;
 
 class TransferDomainCommand implements Command
 {
+	/** @var \SynergyWholesale\Types\Domain */
 	protected $domainName;
 
+	/** @var string */
 	protected $authInfo;
 
+	/** @var \SynergyWholesale\Types\Contact */
 	protected $contact;
 
+	/** @var \SynergyWholesale\Types\Bool */
 	protected $idProtect;
 
+	/** @var \SynergyWholesale\Types\Bool */
 	protected $doRenewal;
 
 	function __construct(

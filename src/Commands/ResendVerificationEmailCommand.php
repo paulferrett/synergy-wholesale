@@ -4,6 +4,7 @@ use SynergyWholesale\Types\Domain;
 
 class ResendVerificationEmailCommand implements Command
 {
+	/** @var \SynergyWholesale\Types\Domain */
 	protected $domain;
 
 	public function __construct(Domain $domain)

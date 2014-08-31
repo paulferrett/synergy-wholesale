@@ -2,8 +2,10 @@
 
 class DetermineSmsCostCommand implements Command
 {
+	/** @var string $destination */
 	protected $destination;
 
+	/** @var string $message */
 	protected $message;
 
 	function __construct($destination, $message)

@@ -2,10 +2,13 @@
 
 class SendSmsCommand implements Command
 {
+	/** @var string */
 	protected $destination;
 
+	/** @var string */
 	protected $senderId;
 
+	/** @var string */
 	protected $message;
 
 	function __construct($destination, $senderId, $message)

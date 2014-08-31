@@ -4,6 +4,7 @@ use SynergyWholesale\Types\UkDomain;
 
 class DomainTransferUkCommand implements Command
 {
+	/** @var \SynergyWholesale\Types\UkDomain */
 	protected $domain;
 
 	public function __construct(UkDomain $domain)

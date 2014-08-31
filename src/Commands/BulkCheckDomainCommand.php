@@ -4,6 +4,7 @@ use SynergyWholesale\Types\DomainList;
 
 class BulkCheckDomainCommand implements Command
 {
+	/** @var \SynergyWholesale\Types\DomainList $domainList */
 	protected $domainList;
 
 	public function __construct(DomainList $domainList)

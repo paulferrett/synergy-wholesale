@@ -9,16 +9,22 @@ use SynergyWholesale\Types\RegistrationYears;
 
 class DomainRegisterAuCommand implements Command
 {
+	/** @var \SynergyWholesale\Types\AuDomain */
 	protected $domainName;
 
+	/** @var \SynergyWholesale\Types\RegistrationYears */
 	protected $years;
 
+	/** @var \SynergyWholesale\Types\DomainList */
 	protected $nameServers;
 
+	/** @var \SynergyWholesale\Types\AuContact */
 	protected $registrant_contact;
 
+	/** @var \SynergyWholesale\Types\AuContact */
 	protected $technical_contact;
 
+	/** @var \SynergyWholesale\Types\AuRegistrant */
 	protected $registrant;
 
 	function __construct(

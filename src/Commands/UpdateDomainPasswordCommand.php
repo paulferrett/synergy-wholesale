@@ -5,8 +5,10 @@ use SynergyWholesale\Types\DomainPassword;
 
 class UpdateDomainPasswordCommand implements Command
 {
+	/** @var \SynergyWholesale\Types\Domain */
 	protected $domain;
 
+	/** @var \SynergyWholesale\Types\DomainPassword */
 	protected $newPassword;
 
 	public function __construct(Domain $domain, DomainPassword $newPassword)

@@ -6,8 +6,10 @@ use SynergyWholesale\Types\RegistrationYears;
 
 class RenewDomainCommand implements Command
 {
+	/** @var \SynergyWholesale\Types\Domain */
 	protected $domainName;
 
+	/** @var \SynergyWholesale\Types\RegistrationYears */
 	protected $years;
 
 	function __construct(
