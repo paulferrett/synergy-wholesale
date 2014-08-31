@@ -6,12 +6,16 @@ use SynergyWholesale\Exception\ResponseErrorException;
 
 abstract class Response
 {
-	public $response;
+	/** @var \stdClass $response */
+	protected $response;
 
-	public $command;
+	/** @var string $command */
+	protected $command;
 
+	/** @var array (string) $expectedFields list of field names we must find in the raw response for it to be considered valid */
 	protected $expectedFields = array();
 
+	/** @var array (string) $successStatus list of status values considered to represent a successful command execution */
 	protected $successStatus = array('OK', 'ok');
 
 	public function __construct(stdClass $response, $command)
@@ -68,9 +72,20 @@ abstract class Response
 		return; // do nothing by default - let subclasses provide their own implementation if they choose
 	}
 
+	/**
+	 * @return stdClass raw response data
+	 */
 	public function getRawResponse()
 	{
 		return $this->response;
+	}
+
+	/**
+	 * @return string command name
+	 */
+	public function getCommandName()
+	{
+		return $this->command;
 	}
 }
 
