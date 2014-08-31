@@ -26,7 +26,6 @@ class DomainListTest extends \PHPUnit_Framework_TestCase
 			new Domain('example.net')
 		);
 
-
 		$dl = new DomainList($list);
 		$list = $dl->getDomainList();
 
@@ -38,13 +37,15 @@ class DomainListTest extends \PHPUnit_Framework_TestCase
 		$this->assertInstanceOf('SynergyWholesale\Types\Domain', $list[1]);
 		$this->assertEquals('example.net', strval($list[1]));
 
-		$names = $dl->getDomainList();
+		$list = $dl->getDomainNames();
 
-		$this->assertTrue(is_array($names));
-		$this->assertArrayHasKey(0, $names);
-		$this->assertEquals('example.com', $names[0]);
+		$this->assertTrue(is_array($list));
+		$this->assertArrayHasKey(0, $list);
+		$this->assertTrue(is_string($list[0]));
+		$this->assertEquals('example.com', strval($list[0]));
 		$this->assertArrayHasKey(1, $list);
-		$this->assertEquals('example.net', $names[1]);
+		$this->assertTrue(is_string($list[1]));
+		$this->assertEquals('example.net', strval($list[1]));
 
 		$this->assertEquals('example.com, example.net', strval($dl));
 	}
