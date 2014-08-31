@@ -4,6 +4,7 @@ use SynergyWholesale\Exception\InvalidArgumentException;
 
 class DomainList
 {
+	/** @var Domain[] $domainList */
 	private $domainList;
 
 	public function __construct(array $domainList)
@@ -26,11 +27,17 @@ class DomainList
 		}
 	}
 
+	/**
+	 * @return SynergyWholesale\Types\Domain[] array of Domain objects representing name servers
+	 */
 	public function getDomainList()
 	{
 		return $this->domainList;
 	}
 
+	/**
+	 * @return array (string) array of name server strings
+	 */
 	public function getDomainNames()
 	{
 		return array_map(function($domain)
