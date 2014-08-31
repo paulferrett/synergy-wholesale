@@ -2,8 +2,9 @@
 
 use SynergyWholesale\Types\UsDomain;
 
-class GetUsNexusData implements Command
+class GetUsNexusDataCommand implements Command
 {
+	/** @var \SynergyWholesale\Types\UsDomain */
 	protected $domain;
 
 	public function __construct(UsDomain $domain)
