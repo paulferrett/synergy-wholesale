@@ -2,6 +2,7 @@
 
 use SynergyWholesale\Types\Bool;
 use SynergyWholesale\Types\Domain;
+use SynergyWholesale\Types\DomainList;
 use SynergyWholesale\Types\DnsConfiguration;
 use SynergyWholesale\Exception\BadDataException;
 use SynergyWholesale\Exception\InvalidArgumentException;
@@ -16,23 +17,30 @@ class DomainInfoResponse extends Response
 		'autoRenew', 'icannStatus', 'icannVerificationDateEnd'
 	);
 
+	/** @var  SynergyWholesale\Types\Domain */
 	protected $domain;
+
+	/** @var  SynergyWholesale\Types\DomainList */
+	protected $nameServers;
 
 	protected function validateData()
 	{
-		try
-		{
-			$this->domain = new Domain($this->response->domainName);
-		}
-		catch (InvalidArgumentException $e)
-		{
-			throw new BadDataException($e->getMessage(), $this->command, $this->response);
-		}
+
 
 		if (!is_array($this->response->nameServers))
 		{
 			$message = "nameServers should be an array";
 			throw new BadDataException($message, $this->command, $this->response);
+		}
+
+		try
+		{
+			$this->domain = new Domain($this->response->domainName);
+			$this->nameServers = new DomainList($this->response->nameServers);
+		}
+		catch (InvalidArgumentException $e)
+		{
+			throw new BadDataException($e->getMessage(), $this->command, $this->response);
 		}
 
 		if ($this->domain->getTopLevelDomain() == 'au')
@@ -82,7 +90,12 @@ class DomainInfoResponse extends Response
 
 	public function getNameServers()
 	{
-		return $this->response->nameServers;
+		return $this->nameServers->getDomainNames();
+	}
+
+	public function getNameServerList()
+	{
+		return $this->nameServers->getDomainList();
 	}
 
 	public function getDnsConfig()
