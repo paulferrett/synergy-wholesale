@@ -6,7 +6,7 @@ class GetUsNexusDataTest extends \PHPUnit_Framework_TestCase
 {
 	public function testCommand()
 	{
-		$command = new GetUsNexusData(new UsDomain('example.us'));
+		$command = new GetUsNexusDataCommand(new UsDomain('example.us'));
 		$build = $command->getRequestData();
 
 		$this->assertTrue(is_array($build));
