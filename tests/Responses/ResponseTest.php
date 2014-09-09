@@ -46,12 +46,14 @@ class ResponseTest extends \PHPUnit_Framework_TestCase {
 		$response = new FooBarResponse($data, 'foo');
 
 		$this->assertInstanceOf('SynergyWholesale\Responses\FooBarResponse', $response);
-		$this->assertTrue(isset($response->response));
-		$this->assertInstanceOf('stdClass', $response->response);
-		$this->assertTrue(isset($response->response->status));
-		$this->assertEquals('OK', $response->response->status);
-		$this->assertTrue(isset($response->response->foo));
-		$this->assertEquals('bar', $response->response->foo);
+
+		$responseData = $response->getRawResponse();
+		$this->assertTrue(isset($responseData));
+		$this->assertInstanceOf('stdClass', $responseData);
+		$this->assertTrue(isset($responseData->status));
+		$this->assertEquals('OK', $responseData->status);
+		$this->assertTrue(isset($responseData->foo));
+		$this->assertEquals('bar', $responseData->foo);
 	}
 
 	public function tearDown()
