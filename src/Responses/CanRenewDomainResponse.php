@@ -9,7 +9,7 @@ class CanRenewDomainResponse extends Response
 	protected function validateData()
 	{
 
-		if ($this->response->status == 'OK_RENEW' AND (!isset($this->response->yearsCanRenewFor) OR !is_numeric($this->response->yearsCanRenewFor)))
+		if ($this->response->status == 'OK_RENEW' AND isset($this->response->yearsCanRenewFor) AND !is_numeric($this->response->yearsCanRenewFor))
 		{
 			throw new BadDataException("Expected a numeric value for yearsCanRenewFor");
 		}
