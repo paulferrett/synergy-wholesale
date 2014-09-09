@@ -2,11 +2,12 @@
 
 class GetTransferredAwayDomainsResponse extends Response
 {
-	protected $expectedFields = array('domains');
-
 	public function getDomains()
 	{
-		return $this->response->domains;
+		if (isset($this->response->domains))
+		{
+			return $this->response->domains;
+		}
 	}
 }
 
