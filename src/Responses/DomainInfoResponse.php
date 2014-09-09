@@ -25,8 +25,6 @@ class DomainInfoResponse extends Response
 
 	protected function validateData()
 	{
-
-
 		if (!is_array($this->response->nameServers))
 		{
 			$message = "nameServers should be an array";
@@ -36,7 +34,10 @@ class DomainInfoResponse extends Response
 		try
 		{
 			$this->domain = new Domain($this->response->domainName);
-			$this->nameServers = new DomainList($this->response->nameServers);
+			if (!empty($this->response->nameServers))
+			{
+				$this->nameServers = new DomainList($this->response->nameServers);
+			}
 		}
 		catch (InvalidArgumentException $e)
 		{
@@ -68,34 +69,58 @@ class DomainInfoResponse extends Response
 		}
 	}
 
+	/**
+	 * @return SynergyWholesale\Types\Domain
+	 */
 	public function getDomain()
 	{
 		return $this->domain;
 	}
 
+	/**
+	 * @return string domain name
+	 */
 	public function getDomainName()
 	{
 		return $this->response->domainName;
 	}
 
+	/**
+	 * @return string domain status
+	 */
 	public function getDomainStatus()
 	{
 		return $this->response->domain_status;
 	}
 
+	/**
+	 * @return string domain expiry
+	 */
 	public function getDomainExpiry()
 	{
 		return $this->response->domain_expiry;
 	}
 
+	/**
+	 * @return string[] array of name server strings
+	 */
 	public function getNameServers()
 	{
-		return $this->nameServers->getDomainNames();
+		if (isset($this->nameServers))
+		{
+			return $this->nameServers->getDomainNames();
+		}
 	}
 
+	/**
+	 * @return SynergyWholesale\Types\Domain[] array of Domain types
+	 */
 	public function getNameServerList()
 	{
-		return $this->nameServers->getDomainList();
+		if (isset($this->nameServers))
+		{
+			return $this->nameServers->getDomainList();
+		}
 	}
 
 	public function getDnsConfig()

@@ -197,7 +197,7 @@ class DomainInfoResponseTest extends \PHPUnit_Framework_TestCase
 		$data->domainName = 'foo';
 		$data->domain_status = '';
 		$data->domain_expiry = '';
-		$data->nameServers = '';
+		$data->nameServers = array();
 		$data->dnsConfig = '';
 		$data->dnsConfigName = '';
 		$data->domainPassword = '';
