@@ -87,6 +87,14 @@ abstract class Response
 	{
 		return $this->command;
 	}
+
+	public function getErrorMessage()
+	{
+		if (isset($this->response->errorMessage))
+		{
+			return $this->response->errorMessage;
+		}
+	}
 }
 
 ?>
