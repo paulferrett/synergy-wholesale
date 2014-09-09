@@ -6,21 +6,19 @@ class ListContactsResponseTest extends \PHPUnit_Framework_TestCase
 {
 	public function setUp()
 	{
-		$this->contact = array(
-			'firstname' => 'firstname',
-			'lastname' => 'lastname',
-			'company' => 'company',
-			'address1' => 'address1',
-			'address2' => 'address2',
-			'address3' => 'address3',
-			'suburb' => 'suburb',
-			'state' => 'state',
-			'country' => 'AU',
-			'postcode' => 'postcode',
-			'phone' => '+61.111111111',
-			'fax' => '',
-			'email' => 'foo@example.com'
-		);
+		$this->contact = new stdClass();
+		$this->contact->firstname = 'firstname';
+		$this->contact->lastname = 'lastname';
+		$this->contact->company = 'company';
+		$this->contact->address1 = 'address1';
+		$this->contact->address2 = 'address2';
+		$this->contact->address3 = 'address3';
+		$this->contact->suburb = 'suburb';
+		$this->contact->state = 'state';
+		$this->contact->country = 'AU';
+		$this->contact->postcode = 'postcode';
+		$this->contact->phone = '+61.111111111';
+		$this->contact->email = 'foo@example.com';
 	}
 
 	public function testResponse()
