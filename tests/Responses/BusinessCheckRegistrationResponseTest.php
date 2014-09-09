@@ -112,10 +112,10 @@ class BusinessCheckRegistrationResponseTest extends \PHPUnit_Framework_TestCase
 
 		$this->assertEquals('foo', $response->getRegistrationNumber());
 		$this->assertEquals('Registered', $response->getEntityStatus());
-		$this->assertEquals('', $response->getAsicNumber());
+		$this->assertNull($response->getAsicNumber());
 		$this->assertEquals('Foo\'s Bar', $response->getEntityName());
-		$this->assertEquals('', $response->getTradingName());
-		$this->assertEquals('', $response->getLegalName());
+		$this->assertNull($response->getTradingName());
+		$this->assertNull($response->getLegalName());
 		$this->assertNull($response->getOrganisationType());
 		$this->assertEquals('VIC', $response->getState());
 		$this->assertNull($response->getPostcode());
@@ -125,10 +125,43 @@ class BusinessCheckRegistrationResponseTest extends \PHPUnit_Framework_TestCase
 		$this->assertInstanceOf('SynergyWholesale\Types\AuBusinessRegistration', $reg);
 		$this->assertEquals('foo', $reg->getRegistrationNumber());
 		$this->assertEquals('Registered', $reg->getEntityStatus());
-		$this->assertEquals('', $reg->getAsicNumber());
+		$this->assertNull($reg->getAsicNumber());
 		$this->assertEquals('Foo\'s Bar', $reg->getEntityName());
 		$this->assertNull($reg->getTradingName());
-		$this->assertEquals('', $reg->getLegalName());
+		$this->assertNull($reg->getLegalName());
+		$this->assertEquals('Registered Business', $reg->getOrganisationTypeName());
+		$this->assertEquals('VIC', $reg->getStateName());
+		$this->assertNull($reg->getPostcodeString());
+	}
+
+	public function testResponse4()
+	{
+		$data = new stdClass();
+		$data->status = "OK";
+		$data->entityStatus = "Registered";
+		$data->entityName = "Foo's Bar";
+
+		$response = new BusinessCheckRegistrationResponse($data, 'BusinessCheckRegistrationCommand');
+
+		$this->assertNull($response->getRegistrationNumber());
+		$this->assertEquals('Registered', $response->getEntityStatus());
+		$this->assertNull($response->getAsicNumber());
+		$this->assertEquals('Foo\'s Bar', $response->getEntityName());
+		$this->assertNull($response->getTradingName());
+		$this->assertNull($response->getLegalName());
+		$this->assertNull($response->getOrganisationType());
+		$this->assertNull($response->getState());
+		$this->assertNull($response->getPostcode());
+
+		$reg = $response->getAuBusinessRegistration('11111111111', 'VIC');
+
+		$this->assertInstanceOf('SynergyWholesale\Types\AuBusinessRegistration', $reg);
+		$this->assertEquals('11111111111', $reg->getRegistrationNumber());
+		$this->assertEquals('Registered', $reg->getEntityStatus());
+		$this->assertNull($reg->getAsicNumber());
+		$this->assertEquals('Foo\'s Bar', $reg->getEntityName());
+		$this->assertNull($reg->getTradingName());
+		$this->assertNull($reg->getLegalName());
 		$this->assertEquals('Registered Business', $reg->getOrganisationTypeName());
 		$this->assertEquals('VIC', $reg->getStateName());
 		$this->assertNull($reg->getPostcodeString());

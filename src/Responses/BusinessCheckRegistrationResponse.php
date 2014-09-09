@@ -82,20 +82,20 @@ class BusinessCheckRegistrationResponse extends Response
 		}
 	}
 
-	public function getAuBusinessRegistration($registrationNumber)
+	public function getAuBusinessRegistration($registrationNumber, $state = null)
 	{
 		$entityStatus = $this->getEntityStatus();
 		$organisationType = $this->getOrganisationType();
 
-		if ($entityStatus == 'Registered' AND isset($this->response->registrationState) AND !isset($organisationType))
-		{
-			$organisationType = 'Registered Business';
-		}
-
-		$state = $this->getState();
+		$state = $this->getState() ?: $state;
 		if (isset($state))
 		{
 			$state = new AuState($state);
+		}
+
+		if ($entityStatus == 'Registered' AND isset($state) AND !isset($organisationType))
+		{
+			$organisationType = 'Registered Business';
 		}
 
 		$postcode = $this->getPostcode();
