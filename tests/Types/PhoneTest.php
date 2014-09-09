@@ -4,21 +4,21 @@ class PhoneTest extends \PHPUnit_Framework_TestCase {
 
 	public function testBadPhone1()
 	{
-		$this->setExpectedException('SynergyWholesale\Exception\InvalidArgumentException', 'Invalid number [] - must be in the format +99.999999999');
+		$this->setExpectedException('SynergyWholesale\Exception\InvalidArgumentException', 'Invalid phone number [] - must be in the format +99.999999999');
 
 		$phone = new Phone('');
 	}
 
 	public function testBadPhone2()
 	{
-		$this->setExpectedException('SynergyWholesale\Exception\InvalidArgumentException', 'Invalid number [+0.0] - must be in the format +99.999999999');
+		$this->setExpectedException('SynergyWholesale\Exception\InvalidArgumentException', 'Invalid phone number [+0.0] - must be in the format +99.999999999');
 
 		$phone = new Phone('+0.0');
 	}
 
 	public function testBadPhone3()
 	{
-		$this->setExpectedException('SynergyWholesale\Exception\InvalidArgumentException', 'Invalid number [+AA.AAAAAAAAA] - must be in the format +99.999999999');
+		$this->setExpectedException('SynergyWholesale\Exception\InvalidArgumentException', 'Invalid phone number [+AA.AAAAAAAAA] - must be in the format +99.999999999');
 
 		$phone = new Phone('+AA.AAAAAAAAA');
 	}

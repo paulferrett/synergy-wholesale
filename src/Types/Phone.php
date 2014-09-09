@@ -13,7 +13,7 @@ class Phone
 
 		if (!preg_match('/^\+[0-9]{1,2}\.[0-9]{6,9}$/', $phone))
 		{
-			throw new InvalidArgumentException("Invalid number [{$phone}] - must be in the format +99.999999999");
+			throw new InvalidArgumentException("Invalid phone number [{$phone}] - must be in the format +99.999999999");
 		}
 		$this->phone = $phone;
 	}
