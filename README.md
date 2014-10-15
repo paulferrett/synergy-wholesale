@@ -13,7 +13,7 @@ The recommended way of installing the Synergy Wholesale Wrapper is through [Comp
     :::json
     {
         "require": {
-            "hampel/synergy-wholesale": "dev-master@dev"
+            "hampel/synergy-wholesale": "~0.4"
         }
     }
 
