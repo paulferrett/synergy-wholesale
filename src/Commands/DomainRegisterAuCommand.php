@@ -1,6 +1,5 @@
 <?php namespace SynergyWholesale\Commands;
 
-use Hampel\Validate\Validator;
 use SynergyWholesale\Types\AuDomain;
 use SynergyWholesale\Types\AuContact;
 use SynergyWholesale\Types\DomainList;

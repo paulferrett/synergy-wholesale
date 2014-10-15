@@ -1,6 +1,5 @@
 <?php  namespace SynergyWholesale\Types; 
 
-use Hampel\Validate\Validator;
 use SynergyWholesale\Exception\InvalidArgumentException;
 
 class Email
@@ -9,8 +8,8 @@ class Email
 
 	function __construct($email)
 	{
-		$validator = new Validator();
-		if (!$validator->isEmail($email))
+		$filtered = filter_var($email, FILTER_VALIDATE_EMAIL);
+		if ($filtered === false)
 		{
 			throw new InvalidArgumentException("Invalid email address [{$email}]");
 		}

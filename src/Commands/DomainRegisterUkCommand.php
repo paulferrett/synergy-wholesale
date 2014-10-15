@@ -1,6 +1,5 @@
 <?php  namespace SynergyWholesale\Commands; 
 
-use Hampel\Validate\Validator;
 use SynergyWholesale\Types\Contact;
 use SynergyWholesale\Types\DomainList;
 use SynergyWholesale\Types\RegistrationYears;

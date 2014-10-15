@@ -1,6 +1,5 @@
 <?php  namespace SynergyWholesale\Types; 
 
-use Mockery\CountValidator\Exception;
 use SynergyWholesale\Exception\InvalidArgumentException;
 
 class Contact

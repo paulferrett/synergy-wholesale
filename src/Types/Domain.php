@@ -1,6 +1,5 @@
 <?php  namespace SynergyWholesale\Types; 
 
-use Hampel\Validate\Validator;
 use SynergyWholesale\Exception\InvalidArgumentException;
 
 class Domain
@@ -26,8 +25,8 @@ class Domain
 	public function __construct($name)
 	{
 		$name = strtolower($name);
-		$validator = new Validator();
-		if (!$validator->isDomain($name, $validator->getTlds()))
+
+		if (!preg_match('/\b((?=[a-z0-9-]{1,63}\.)(xn--)?[a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,63}\b/ix', $name))
 		{
 			throw new InvalidArgumentException("Invalid domain name [{$name}]");
 		}

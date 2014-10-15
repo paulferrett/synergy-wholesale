@@ -1,26 +1,21 @@
 <?php  namespace SynergyWholesale\Commands;
 
-use Hampel\Validate\Validator;
 use SynergyWholesale\Exception\InvalidArgumentException;
+use SynergyWholesale\Types\Tld;
 
 class GetDomainExtensionOptionsCommand implements Command
 {
 	/** @var string $tld */
 	protected $tld;
 
-	function __construct($tld)
+	function __construct(Tld $tld)
 	{
-		$validator = new Validator();
-		if (!$validator->isTld($tld, $validator->getTlds()))
-		{
-			throw new InvalidArgumentException("Invalid TLD [{$tld}]");
-		}
 		$this->tld = $tld;
 	}
 
 	public function getRequestData()
 	{
-		return array('tld' => $this->tld);
+		return array('tld' => strval($this->tld));
 	}
 }
 

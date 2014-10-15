@@ -1,14 +1,12 @@
 <?php  namespace SynergyWholesale\Types; 
 
-use Hampel\Validate\Validator;
 use SynergyWholesale\Exception\InvalidArgumentException;
 
 class AuDomain extends Domain
 {
 	public function __construct($name)
 	{
-		$validator = new Validator();
-		if (!$validator->isDomain($name, array('au')))
+		if (substr(strtolower($name), -3) != '.au')
 		{
 			throw new InvalidArgumentException("Invalid domain name [{$name}] - must be a .au domain");
 		}

@@ -1,7 +1,8 @@
 <?php  namespace SynergyWholesale\Responses;
 
-use Hampel\Validate\Validator;
+use SynergyWholesale\Types\Email;
 use SynergyWholesale\Exception\BadDataException;
+use SynergyWholesale\Exception\InvalidArgumentException;
 
 class ResendTransferEmailResponse extends Response
 {
@@ -9,8 +10,11 @@ class ResendTransferEmailResponse extends Response
 
 	protected function validateData()
 	{
-		$validator = new Validator();
-		if (!$validator->isEmail($this->response->newEmail))
+		try
+		{
+			$email = new Email($this->response->newEmail);
+		}
+		catch (InvalidArgumentException $e)
 		{
 			throw new BadDataException("Response parameter newEmail should contain an email address");
 		}

@@ -1,6 +1,5 @@
 <?php  namespace SynergyWholesale\Commands;
 
-use Hampel\Validate\Validator;
 use SynergyWholesale\Types\Bool;
 use SynergyWholesale\Types\Domain;
 use SynergyWholesale\Types\Contact;
