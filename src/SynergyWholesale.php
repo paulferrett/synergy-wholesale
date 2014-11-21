@@ -331,10 +331,10 @@ class SynergyWholesale
 	public function resubmitFailedTransfer(Commands\ResubmitFailedTransferCommand $command) { return $this->execute($command); }
 
 	/**
-	 * @param Commands\SendSmsCommand $command
-	 * @return Responses\SendSmsResponse
+	 * @param Commands\SendSMSCommand $command
+	 * @return Responses\SendSMSResponse
 	 */
-	public function sendSms(Commands\SendSmsCommand $command) { return $this->execute($command); }
+	public function sendSms(Commands\SendSMSCommand $command) { return $this->execute($command); }
 
 	/**
 	 * @param Commands\TransferDomainCommand $command

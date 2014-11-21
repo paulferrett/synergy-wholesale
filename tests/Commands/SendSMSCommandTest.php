@@ -1,10 +1,10 @@
 <?php  namespace SynergyWholesale\Commands;
 
-class SendSmsCommandTest extends \PHPUnit_Framework_TestCase
+class SendSMSCommandTest extends \PHPUnit_Framework_TestCase
 {
 	public function testCommand()
 	{
-		$command = new SendSmsCommand(
+		$command = new SendSMSCommand(
 			'0400000000',
 			'foo',
 			'bar'

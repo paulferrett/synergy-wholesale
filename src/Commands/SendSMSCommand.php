@@ -1,6 +1,6 @@
 <?php  namespace SynergyWholesale\Commands; 
 
-class SendSmsCommand implements Command
+class SendSMSCommand implements Command
 {
 	/** @var string */
 	protected $destination;

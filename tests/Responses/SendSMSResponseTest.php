@@ -2,7 +2,7 @@
 
 use stdClass;
 
-class SendSmsResponseTest extends \PHPUnit_Framework_TestCase
+class SendSMSResponseTest extends \PHPUnit_Framework_TestCase
 {
 	public function testResponse()
 	{
@@ -12,7 +12,7 @@ class SendSmsResponseTest extends \PHPUnit_Framework_TestCase
 		$data->perMsgCost = 0.12;
 		$data->totalMsgCost = 0.24;
 
-		$response = new SendSmsResponse($data, 'SendSmsCommand');
+		$response = new SendSMSResponse($data, 'SendSMSCommand');
 
 		$this->assertEquals(2, $response->getMsgCount());
 		$this->assertEquals(0.12, $response->getPerMsgCost());

@@ -1,6 +1,6 @@
 <?php  namespace SynergyWholesale\Responses; 
 
-class SendSmsResponse extends Response
+class SendSMSResponse extends Response
 {
 	protected $expectedFields = array('msgCount', 'perMsgCost', 'totalMsgCost');
 
