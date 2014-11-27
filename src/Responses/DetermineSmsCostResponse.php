@@ -1,6 +1,6 @@
 <?php  namespace SynergyWholesale\Responses; 
 
-class DetermineSmsCostResponse extends Response
+class DetermineSMSCostResponse extends Response
 {
 	protected $expectedFields = array('msgCount', 'perMsgCost', 'totalMsgCost');
 

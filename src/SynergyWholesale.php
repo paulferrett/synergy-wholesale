@@ -207,7 +207,7 @@ class SynergyWholesale
 	 * @param Commands\DetermineSmsCostCommand $command
 	 * @return Responses\DetermineSmsCostResponse
 	 */
-	public function determineSmsCost(Commands\DetermineSmsCostCommand $command) { return $this->execute($command); }
+	public function determineSmsCost(Commands\DetermineSMSCostCommand $command) { return $this->execute($command); }
 
 	/**
 	 * @param Commands\DisableAutoRenewalCommand $command

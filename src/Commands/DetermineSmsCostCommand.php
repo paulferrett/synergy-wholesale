@@ -1,6 +1,6 @@
 <?php  namespace SynergyWholesale\Commands; 
 
-class DetermineSmsCostCommand implements Command
+class DetermineSMSCostCommand implements Command
 {
 	/** @var string $destination */
 	protected $destination;

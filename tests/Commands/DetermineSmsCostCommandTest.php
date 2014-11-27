@@ -1,10 +1,10 @@
 <?php  namespace SynergyWholesale\Commands;
 
-class DetermineSmsCostCommandTest extends \PHPUnit_Framework_TestCase
+class DetermineSMSCostCommandTest extends \PHPUnit_Framework_TestCase
 {
 	public function testCommand()
 	{
-		$command = new DetermineSmsCostCommand(
+		$command = new DetermineSMSCostCommand(
 			'0400000000',
 			'foo'
 		);

@@ -12,7 +12,7 @@ class DetermineSmsCostResponseTest extends \PHPUnit_Framework_TestCase
 		$data->perMsgCost = 0.12;
 		$data->totalMsgCost = 0.24;
 
-		$response = new DetermineSmsCostResponse($data, 'DetermineSmsCostCommand');
+		$response = new DetermineSMSCostResponse($data, 'DetermineSmsCostCommand');
 
 		$this->assertEquals(2, $response->getMsgCount());
 		$this->assertEquals(0.12, $response->getPerMsgCost());
