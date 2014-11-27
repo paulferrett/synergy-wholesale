@@ -13,7 +13,7 @@ The recommended way of installing the Synergy Wholesale Wrapper is through [Comp
     :::json
     {
         "require": {
-            "hampel/synergy-wholesale": "~0.4"
+            "hampel/synergy-wholesale": "~0.5"
         }
     }
 
@@ -118,13 +118,8 @@ __Domain Information Command Example__
 Notes
 -----
  
-Only the following calls have been implemented so far:
+Only the Domain Name and SMS API calls have been implemented
 
-* balanceQuery
-* domainInfo
-* checkDomain
-* bulkcheckDomain
- 
 TODO: 
 
 * Implement all the other calls to the SynergyWholesale API
