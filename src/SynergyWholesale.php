@@ -334,7 +334,7 @@ class SynergyWholesale
 	 * @param Commands\SendSMSCommand $command
 	 * @return Responses\SendSMSResponse
 	 */
-	public function sendSms(Commands\SendSMSCommand $command) { return $this->execute($command); }
+	public function sendSMS(Commands\SendSMSCommand $command) { return $this->execute($command); }
 
 	/**
 	 * @param Commands\TransferDomainCommand $command
