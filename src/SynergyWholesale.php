@@ -204,10 +204,10 @@ class SynergyWholesale
 	public function checkDomain(Commands\CheckDomainCommand $command) { return $this->execute($command); }
 
 	/**
-	 * @param Commands\DetermineSmsCostCommand $command
-	 * @return Responses\DetermineSmsCostResponse
+	 * @param Commands\DetermineSMSCostCommand $command
+	 * @return Responses\DetermineSMSCostResponse
 	 */
-	public function determineSmsCost(Commands\DetermineSMSCostCommand $command) { return $this->execute($command); }
+	public function determineSMSCost(Commands\DetermineSMSCostCommand $command) { return $this->execute($command); }
 
 	/**
 	 * @param Commands\DisableAutoRenewalCommand $command
