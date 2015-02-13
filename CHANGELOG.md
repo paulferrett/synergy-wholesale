@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+1.0.0 (2015-02-13)
+------------------
+
+* even though not feature complete yet, it's time to release a stable version
+
 0.5.1 (2015-02-13)
 ------------------
 
