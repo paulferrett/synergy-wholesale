@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+1.0.2 (2015-02-13)
+------------------
+
+* fix naming of determineSMSCostResponse file for case-insensitive platforms
+
 1.0.1 (2015-02-13)
 ------------------
 
