@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+0.5.1 (2015-02-13)
+------------------
+
+* changed mockery requirement to use ^0.9, updated branch-alias
+
 0.5.0 (2014-10-15)
 ------------------
 
