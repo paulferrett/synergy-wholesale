@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+1.0.1 (2015-02-13)
+------------------
+
+* fix naming of determineSMSCostCommand file for case-insensitive platforms
+* rename determineSMSCost helper function for consistency
+
 1.0.0 (2015-02-13)
 ------------------
 
