@@ -25,6 +25,3 @@ class ResendTransferEmailResponse extends Response
 		return $this->response->newEmail;
 	}
 }
-
-?>
- 

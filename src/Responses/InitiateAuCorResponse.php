@@ -19,6 +19,3 @@ class InitiateAuCorResponse extends Response
 		return $this->response->costPrice;
 	}
 }
-
-?>
- 

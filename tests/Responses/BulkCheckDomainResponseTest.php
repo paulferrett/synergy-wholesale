@@ -60,6 +60,3 @@ class BulkCheckDomainResponseTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(true, $domains['foo.com.au']);
 	}
 }
-
-?>
- 

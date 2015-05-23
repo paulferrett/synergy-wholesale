@@ -17,6 +17,3 @@ class CanRenewDomainCommand implements Command
 		return array('domainName' => strval($this->domain));
 	}
 }
-
-?>
- 

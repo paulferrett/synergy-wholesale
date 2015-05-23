@@ -37,6 +37,3 @@ class DetermineSMSCostResponse extends Response
 		return $this->response->totalMsgCost;
 	}
 }
-
-?>
- 

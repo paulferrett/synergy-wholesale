@@ -179,5 +179,3 @@ class DomainInfoResponse extends Response
 		return $this->response->icannVerificationDateEnd;
 	}
 }
-
-?>

@@ -8,6 +8,3 @@ class ResendVerificationEmailResponse
 		return true;
 	}
 }
-
-?>
- 

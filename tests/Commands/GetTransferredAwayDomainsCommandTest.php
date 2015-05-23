@@ -11,6 +11,3 @@ class GetTransferredAwayDomainsCommandTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue(empty($build));
 	}
 }
-
-?>
- 

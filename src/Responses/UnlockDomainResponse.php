@@ -8,6 +8,3 @@ class UnlockDomainResponse extends Response
 		return true;
 	}
 }
-
-?>
- 

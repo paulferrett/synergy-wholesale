@@ -30,6 +30,3 @@ class AuPostCode
 		return $this->postcode === $other->postcode;
 	}
 }
-
-?>
- 

@@ -141,6 +141,3 @@ class ListContactsResponse extends Response
 		return $this->billing;
 	}
 }
-
-?>
- 

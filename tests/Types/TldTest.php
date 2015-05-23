@@ -42,6 +42,3 @@ class TldTest extends \PHPUnit_Framework_TestCase {
 		$this->assertTrue($tld->equals(new Tld('com.au')));
 	}
 }
-
-?>
- 

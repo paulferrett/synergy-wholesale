@@ -8,6 +8,3 @@ class UpdateNameServersResponse extends Response
 		return true;
 	}
 }
-
-?>
- 

@@ -19,6 +19,3 @@ class DomainRegisterResponse extends Response
 		return $this->response->costPrice;
 	}
 }
-
-?>
- 

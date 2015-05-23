@@ -8,6 +8,3 @@ class DisableIdProtectionResponse extends Response
 		return true;
 	}
 }
-
-?>
- 

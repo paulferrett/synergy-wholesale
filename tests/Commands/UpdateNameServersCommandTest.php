@@ -27,6 +27,3 @@ class UpdateNameServersCommandTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(DnsConfiguration::CUSTOM_NAME_SERVERS, $build['dnsConfigType']);
 	}
 }
-
-?>
- 

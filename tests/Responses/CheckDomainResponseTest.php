@@ -24,6 +24,3 @@ class CheckDomainResponseTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(false, $response->isAvailable());
 	}
 }
-
-?>
- 

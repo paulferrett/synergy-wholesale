@@ -18,6 +18,3 @@ class UsNexusCategoryTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($nc->equals(UsNexusCategory::US_CITIZEN()));
 	}
 }
-
-?>
- 

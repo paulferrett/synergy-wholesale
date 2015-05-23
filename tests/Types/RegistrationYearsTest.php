@@ -46,6 +46,3 @@ class RegistrationYearsTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($years->equals(new RegistrationYears("2")));
 	}
 }
-
-?>
- 

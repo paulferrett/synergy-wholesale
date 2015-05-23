@@ -80,6 +80,3 @@ class Bool
 		return $this->bool === $other->bool;
 	}
 }
-
-?>
- 

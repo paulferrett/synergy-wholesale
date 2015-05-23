@@ -160,6 +160,3 @@ class UpdateContactCommandTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals('foo@example.com', $build['technical_email']);
 	}
 }
-
-?>
- 

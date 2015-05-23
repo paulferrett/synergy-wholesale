@@ -4,6 +4,3 @@ class UnknownDnsConfigurationException extends InvalidArgumentException
 {
 
 }
-
-?>
- 

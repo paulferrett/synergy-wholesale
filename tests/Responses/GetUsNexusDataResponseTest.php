@@ -24,6 +24,3 @@ class GetUsNexusDataResponseTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(UsAppPurpose::PERSONAL, $response->getNexusApplicationString());
 	}
 }
-
-?>
- 

@@ -167,6 +167,3 @@ class BusinessCheckRegistrationResponseTest extends \PHPUnit_Framework_TestCase
 		$this->assertNull($reg->getPostcodeString());
 	}
 }
-
-?>
- 

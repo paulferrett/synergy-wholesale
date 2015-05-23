@@ -17,6 +17,3 @@ class ResendTransferEmailCommand implements Command
 		return array('domainName' => strval($this->domain));
 	}
 }
-
-?>
- 

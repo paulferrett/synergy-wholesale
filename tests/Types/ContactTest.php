@@ -74,6 +74,3 @@ class ContactTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals('+61.222222222', $contact->getFax()->getPhone());
 	}
 }
-
-?>
- 

@@ -8,6 +8,3 @@ class DomainReleaseUkResponse extends Response
 		return true;
 	}
 }
-
-?>
- 

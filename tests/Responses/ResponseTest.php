@@ -68,6 +68,3 @@ class FooBarResponse extends Response
 
 	public function validateData(){}
 }
-
-?>
- 

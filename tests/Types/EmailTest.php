@@ -22,6 +22,3 @@ class EmailTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals('foo@example.com', $email->getEmail());
 	}
 }
-
-?>
- 

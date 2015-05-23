@@ -84,6 +84,3 @@ class DomainRegisterUkCommandTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals('foo@example.com', $build['contact_email']);
 	}
 }
-
-?>
- 

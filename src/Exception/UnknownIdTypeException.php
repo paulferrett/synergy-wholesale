@@ -4,6 +4,3 @@ class UnknownIdTypeException extends InvalidArgumentException
 {
 
 }
-
-?>
- 

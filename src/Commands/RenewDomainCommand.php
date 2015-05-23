@@ -29,6 +29,3 @@ class RenewDomainCommand implements Command
 		);
 	}
 }
-
-?>
- 

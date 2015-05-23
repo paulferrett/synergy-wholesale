@@ -44,6 +44,3 @@ class Country
 		return $this->countryCode === $other->countryCode;
 	}
 }
-
-?>
- 

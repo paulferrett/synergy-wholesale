@@ -17,5 +17,3 @@ class CheckDomainCommand implements Command
 		return array('domainName' => strval($this->domain));
 	}
 }
-
-?>

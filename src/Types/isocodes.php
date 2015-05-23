@@ -245,5 +245,3 @@ return array(
 	'ZM' => 'Zambia',
 	'ZW' => 'Zimbabwe',
 );
-?>
- 

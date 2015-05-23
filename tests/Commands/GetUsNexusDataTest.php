@@ -14,6 +14,3 @@ class GetUsNexusDataTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals('example.us', $build['domainName']);
 	}
 }
-
-?>
- 

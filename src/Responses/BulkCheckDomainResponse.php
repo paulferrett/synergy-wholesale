@@ -49,6 +49,3 @@ class BulkCheckDomainResponse extends Response
 		return $domainList;
 	}
 }
-
-?>
- 

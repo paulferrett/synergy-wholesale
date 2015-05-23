@@ -4,6 +4,3 @@ class LengthException extends \LengthException implements Exception
 {
 
 }
-
-?>
- 

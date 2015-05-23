@@ -14,6 +14,3 @@ class UkDomain extends Domain
 		parent::__construct($name);
 	}
 }
-
-?>
- 

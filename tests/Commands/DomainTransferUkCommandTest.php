@@ -14,6 +14,3 @@ class DomainTransferUkCommandTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals('example.uk', $build['domainName']);
 	}
 }
-
-?>
- 

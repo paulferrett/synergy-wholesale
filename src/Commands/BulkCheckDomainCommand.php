@@ -17,5 +17,3 @@ class BulkCheckDomainCommand implements Command
 		return array('domainList' => $this->domainList->getDomainNames());
 	}
 }
-
-?>

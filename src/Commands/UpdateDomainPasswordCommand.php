@@ -25,5 +25,3 @@ class UpdateDomainPasswordCommand implements Command
 		);
 	}
 }
-
-?>

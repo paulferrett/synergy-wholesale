@@ -51,6 +51,3 @@ class DomainList
 		return implode(', ', $this->domainList);
 	}
 }
-
-?>
- 

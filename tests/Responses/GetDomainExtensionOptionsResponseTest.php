@@ -33,6 +33,3 @@ class GetDomainExtensionOptionsResponseTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(2, $response->getMaxYears());
 	}
 }
-
-?>
- 

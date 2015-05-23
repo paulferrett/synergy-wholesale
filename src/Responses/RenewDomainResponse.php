@@ -19,6 +19,3 @@ class RenewDomainResponse extends Response
 		return $this->response->costPrice;
 	}
 }
-
-?>
- 

@@ -63,6 +63,3 @@ class DnsConfiguration
 		return $this->config === $other->config;
 	}
 }
-
-?>
- 

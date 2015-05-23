@@ -34,6 +34,3 @@ class DomainPassword
 		return $this->password === $other->password;
 	}
 }
-
-?>
- 

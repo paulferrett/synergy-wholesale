@@ -29,6 +29,3 @@ class GetUsNexusDataResponse extends Response
 		return strval($this->getNexusApplication());
 	}
 }
-
-?>
- 

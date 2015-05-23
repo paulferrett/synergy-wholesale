@@ -72,6 +72,3 @@ class AuIdType
 		return $this->idType === $other->idType;
 	}
 }
-
-?>
- 

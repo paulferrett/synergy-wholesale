@@ -19,6 +19,3 @@ class DnsConfigurationTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($config->equals(DnsConfiguration::CUSTOM()));
 	}
 }
-
-?>
- 

@@ -53,6 +53,3 @@ class BoolTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse(Bool::convert('no'));
 	}
 }
-
-?>
- 

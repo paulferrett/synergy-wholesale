@@ -8,6 +8,3 @@ class DisableAutoRenewalResponse extends Response
 		return true;
 	}
 }
-
-?>
- 

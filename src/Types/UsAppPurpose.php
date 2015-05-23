@@ -69,6 +69,3 @@ class UsAppPurpose
 		return new static(SELF::GOVERNMENTAL);
 	}
 }
-
-?>
- 

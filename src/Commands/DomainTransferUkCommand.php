@@ -17,6 +17,3 @@ class DomainTransferUkCommand implements Command
 		return array('domainName' => strval($this->domain));
 	}
 }
-
-?>
- 

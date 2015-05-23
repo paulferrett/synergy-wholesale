@@ -29,5 +29,3 @@ class BusinessCheckRegistrationCommand implements Command
 		return $data;
 	}
 }
-
-?>

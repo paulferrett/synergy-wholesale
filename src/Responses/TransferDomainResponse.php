@@ -19,6 +19,3 @@ class TransferDomainResponse extends Response
 		return $this->response->costPrice;
 	}
 }
-
-?>
- 

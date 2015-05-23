@@ -37,6 +37,3 @@ class SendSMSResponse extends Response
 		return $this->response->totalMsgCost;
 	}
 }
-
-?>
- 

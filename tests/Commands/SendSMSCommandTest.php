@@ -21,6 +21,3 @@ class SendSMSCommandTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals('bar', $build['message']);
 	}
 }
-
-?>
- 

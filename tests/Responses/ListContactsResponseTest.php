@@ -66,6 +66,3 @@ class ListContactsResponseTest extends \PHPUnit_Framework_TestCase
 		$this->assertNull($response->getAdmin());
 	}
 }
-
-?>
- 

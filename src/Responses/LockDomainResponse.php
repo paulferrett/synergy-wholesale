@@ -8,6 +8,3 @@ class LockDomainResponse extends Response
 		return true;
 	}
 }
-
-?>
- 

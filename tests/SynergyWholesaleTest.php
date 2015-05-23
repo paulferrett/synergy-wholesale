@@ -79,4 +79,3 @@ class SynergyWholesaleTest extends \PHPUnit_Framework_TestCase
     }
 }
 
-?>

@@ -18,6 +18,3 @@ class DetermineSMSCostCommandTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals('foo', $build['message']);
 	}
 }
-
-?>
- 

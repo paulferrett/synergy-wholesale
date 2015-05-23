@@ -24,6 +24,3 @@ class DomainReleaseUkCommand implements Command
 		);
 	}
 }
-
-?>
- 

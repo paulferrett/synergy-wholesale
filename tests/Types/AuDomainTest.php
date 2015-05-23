@@ -34,6 +34,3 @@ class AuDomainTest extends \PHPUnit_Framework_TestCase {
 		$this->assertTrue($domain->isSubDomain());
 	}
 }
-
-?>
- 

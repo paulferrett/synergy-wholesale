@@ -17,6 +17,3 @@ class BalanceQueryResponse extends Response
 		return $this->response->balance;
 	}
 }
-
-?>
- 

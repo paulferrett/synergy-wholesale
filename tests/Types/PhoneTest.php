@@ -36,6 +36,3 @@ class PhoneTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals('+00.000000000', $phone->getPhone());
 	}
 }
-
-?>
- 

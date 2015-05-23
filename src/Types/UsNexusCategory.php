@@ -69,6 +69,3 @@ class UsNexusCategory
 		return new static(self::FOREIGN_ORGANISATION_US_OFFICE);
 	}
 }
-
-?>
- 

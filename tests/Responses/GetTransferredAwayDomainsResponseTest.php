@@ -30,6 +30,3 @@ class GetTransferredAwayDomainsResponseTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals('bar', $domains[0]['timestamp']);
 	}
 }
-
-?>
- 

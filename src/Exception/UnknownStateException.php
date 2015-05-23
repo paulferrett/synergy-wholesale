@@ -4,6 +4,3 @@ class UnknownStateException extends InvalidArgumentException
 {
 
 }
-
-?>
- 

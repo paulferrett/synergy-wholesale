@@ -61,6 +61,3 @@ class AuOrganisationType
 		return $this->organisationType === $other->organisationType;
 	}
 }
-
-?>
- 

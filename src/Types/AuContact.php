@@ -49,6 +49,3 @@ class AuContact extends Contact
 		return $this->postcode->getPostcode();
 	}
 }
-
-?>
- 

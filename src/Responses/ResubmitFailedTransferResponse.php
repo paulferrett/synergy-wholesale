@@ -35,6 +35,3 @@ class ResubmitFailedTransferResponse extends Response
 		return $this->response->newEmail;
 	}
 }
-
-?>
- 

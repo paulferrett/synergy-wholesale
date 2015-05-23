@@ -10,6 +10,3 @@ class GetTransferredAwayDomainsResponse extends Response
 		}
 	}
 }
-
-?>
- 

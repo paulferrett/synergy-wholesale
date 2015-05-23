@@ -7,6 +7,3 @@ class GetTransferredAwayDomainsCommand implements Command
 		return array();
 	}
 }
-
-?>
- 

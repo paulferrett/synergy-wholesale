@@ -35,6 +35,3 @@ class UpdateNameServersCommand implements Command
 		);
 	}
 }
-
-?>
- 

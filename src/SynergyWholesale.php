@@ -427,5 +427,3 @@ class SynergyWholesale
 		}
 	}
 }
-
-?>

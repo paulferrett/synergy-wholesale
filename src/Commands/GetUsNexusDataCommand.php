@@ -17,6 +17,3 @@ class GetUsNexusDataCommand implements Command
 		return array('domainName' => strval($this->domain));
 	}
 }
-
-?>
- 

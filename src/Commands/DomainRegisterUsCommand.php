@@ -72,6 +72,3 @@ class DomainRegisterUsCommand implements Command
 		);
 	}
 }
-
-?>
- 

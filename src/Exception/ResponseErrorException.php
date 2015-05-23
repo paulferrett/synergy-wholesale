@@ -37,5 +37,3 @@ class ResponseErrorException extends RuntimeException
 		return $this->status;
 	}
 }
-
-?>

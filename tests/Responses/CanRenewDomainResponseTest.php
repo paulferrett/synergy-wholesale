@@ -44,6 +44,3 @@ class CanRenewDomainResponseTest extends \PHPUnit_Framework_TestCase
 		$this->assertNull($response->getYearsCanRenewFor());
 	}
 }
-
-?>
- 

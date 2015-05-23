@@ -25,5 +25,3 @@ class BadDataException extends RuntimeException
 		return $this->response;
 	}
 }
-
-?>

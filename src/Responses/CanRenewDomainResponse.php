@@ -28,6 +28,3 @@ class CanRenewDomainResponse extends Response
 		}
 	}
 }
-
-?>
- 

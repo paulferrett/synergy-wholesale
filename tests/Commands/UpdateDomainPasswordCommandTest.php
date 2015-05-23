@@ -20,6 +20,3 @@ class UpdateDomainPasswordCommandTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals('foobar', $build['newPassword']);
 	}
 }
-
-?>
- 

@@ -14,6 +14,3 @@ class AuDomain extends Domain
 		parent::__construct($name);
 	}
 }
-
-?>
- 

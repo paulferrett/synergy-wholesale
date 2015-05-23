@@ -22,6 +22,3 @@ class DetermineSMSCostCommand implements Command
 		);
 	}
 }
-
-?>
- 

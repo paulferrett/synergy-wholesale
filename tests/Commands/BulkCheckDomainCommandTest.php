@@ -24,5 +24,3 @@ class BulkCheckDomainCommandTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals('example.net', $build['domainList'][1]);
 	}
 }
-
-?>

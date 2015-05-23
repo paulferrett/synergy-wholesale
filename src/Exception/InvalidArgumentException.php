@@ -4,6 +4,3 @@ class InvalidArgumentException extends \InvalidArgumentException implements Exce
 {
 
 }
-
-?>
- 

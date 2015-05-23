@@ -4,6 +4,3 @@ class UnknownNexusCategoryException extends InvalidArgumentException
 {
 
 }
-
-?>
- 

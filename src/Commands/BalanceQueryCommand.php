@@ -7,5 +7,3 @@ class BalanceQueryCommand implements Command
 		return array();
 	}
 }
-
-?>

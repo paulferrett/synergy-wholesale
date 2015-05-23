@@ -128,5 +128,3 @@ class BusinessCheckRegistrationResponse extends Response
 		);
 	}
 }
-
-?>

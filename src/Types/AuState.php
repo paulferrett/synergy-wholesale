@@ -33,6 +33,3 @@ class AuState
 		return $this->state === $other->state;
 	}
 }
-
-?>
- 

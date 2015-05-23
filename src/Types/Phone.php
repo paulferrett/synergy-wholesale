@@ -33,6 +33,3 @@ class Phone
 		return $this->phone === $other->phone;
 	}
 }
-
-?>
- 

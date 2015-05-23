@@ -23,5 +23,3 @@ class SoapException extends RuntimeException
 		return $this->command;
 	}
 }
-
-?>

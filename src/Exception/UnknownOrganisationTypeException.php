@@ -4,6 +4,3 @@ class UnknownOrganisationTypeException extends InvalidArgumentException
 {
 
 }
-
-?>
- 

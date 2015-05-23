@@ -18,6 +18,3 @@ class GetDomainExtensionOptionsCommand implements Command
 		return array('tld' => strval($this->tld));
 	}
 }
-
-?>
- 

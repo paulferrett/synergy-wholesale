@@ -42,6 +42,3 @@ class BasicResponseGenerator implements ResponseGenerator
 		return $responseClass;
 	}
 }
-
-?>
- 

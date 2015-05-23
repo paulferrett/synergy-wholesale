@@ -126,6 +126,3 @@ class Domain
 		return substr($this->getName(), 0, -strlen($extension));
 	}
 }
-
-?>
- 

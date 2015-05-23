@@ -17,5 +17,3 @@ class DomainInfoCommand implements Command
 		return array('domainName' => $this->domain->getName());
 	}
 }
-
-?>

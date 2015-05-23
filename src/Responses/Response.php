@@ -96,6 +96,3 @@ abstract class Response
 		}
 	}
 }
-
-?>
- 

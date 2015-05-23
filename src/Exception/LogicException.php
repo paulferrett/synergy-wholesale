@@ -4,6 +4,3 @@ class LogicException extends \LogicException implements Exception
 {
 
 }
-
-?>
- 

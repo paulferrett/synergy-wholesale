@@ -19,6 +19,3 @@ class SendSMSResponseTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(0.24, $response->getTotalMsgCost());
 	}
 }
-
-?>
- 

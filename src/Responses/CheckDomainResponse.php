@@ -9,6 +9,3 @@ class CheckDomainResponse extends Response
 		return ($this->response->status == 'AVAILABLE');
 	}
 }
-
-?>
- 

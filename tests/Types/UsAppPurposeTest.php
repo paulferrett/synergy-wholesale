@@ -18,6 +18,3 @@ class UsAppPurposeTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($ap->equals(UsAppPurpose::BUSINESS()));
 	}
 }
-
-?>
- 

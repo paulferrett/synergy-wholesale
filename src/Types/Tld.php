@@ -71,6 +71,3 @@ class Tld
 		return strlen($part) == 2;
 	}
 }
-
-?>
- 

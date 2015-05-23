@@ -14,6 +14,3 @@ class UpdateDomainPasswordResponseTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($response->updateSuccessful());
 	}
 }
-
-?>
- 

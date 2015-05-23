@@ -19,6 +19,3 @@ class AuStateTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals('VIC', $state->getState());
 	}
 }
-
-?>
- 

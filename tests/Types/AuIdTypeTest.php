@@ -28,6 +28,3 @@ class AuIdTypeTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals('NSW BN', $id->getIdType());
 	}
 }
-
-?>
- 

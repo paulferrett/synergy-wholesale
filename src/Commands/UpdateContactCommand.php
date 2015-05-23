@@ -106,6 +106,3 @@ class UpdateContactCommand implements Command
 		);
 	}
 }
-
-?>
- 

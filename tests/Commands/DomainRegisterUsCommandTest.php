@@ -95,6 +95,3 @@ class DomainRegisterUsCommandTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals('C31', $build['nexusCategory']);
 	}
 }
-
-?>
- 

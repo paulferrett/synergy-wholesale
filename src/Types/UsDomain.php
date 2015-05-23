@@ -14,6 +14,3 @@ class UsDomain extends Domain
 		parent::__construct($name);
 	}
 }
-
-?>
- 

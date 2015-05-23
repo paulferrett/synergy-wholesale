@@ -8,5 +8,3 @@ class UpdateDomainPasswordResponse extends Response
 		return true;
 	}
 }
-
-?>

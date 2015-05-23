@@ -8,6 +8,3 @@ class EnableAutoRenewalResponse extends Response
 		return true;
 	}
 }
-
-?>
- 

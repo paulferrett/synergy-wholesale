@@ -14,6 +14,3 @@ class ResendVerificationEmailResponseTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($response->resendSuccessful());
 	}
 }
-
-?>
- 

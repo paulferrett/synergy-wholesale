@@ -17,6 +17,3 @@ class ResendVerificationEmailCommand implements Command
 		return array('domainName' => strval($this->domain));
 	}
 }
-
-?>
- 

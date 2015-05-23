@@ -9,5 +9,3 @@ interface Exception
 {
 
 }
-
-?> 

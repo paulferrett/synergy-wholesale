@@ -8,6 +8,3 @@ class UpdateContactResponse extends Response
 		return true;
 	}
 }
-
-?>
- 

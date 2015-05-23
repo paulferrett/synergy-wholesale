@@ -24,6 +24,3 @@ class ResubmitFailedTransferCommand implements Command
 		);
 	}
 }
-
-?>
- 

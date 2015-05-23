@@ -17,6 +17,3 @@ class EnableAutoRenewalCommand implements Command
 		return array('domainName' => strval($this->domain));
 	}
 }
-
-?>
- 

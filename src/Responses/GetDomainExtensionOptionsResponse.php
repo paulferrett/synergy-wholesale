@@ -61,6 +61,3 @@ class GetDomainExtensionOptionsResponse extends Response
 		return intval($this->response->maxYears);
 	}
 }
-
-?>
- 

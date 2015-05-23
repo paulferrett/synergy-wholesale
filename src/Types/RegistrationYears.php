@@ -31,6 +31,3 @@ class RegistrationYears
 		return $this->years === $other->years;
 	}
 }
-
-?>
- 
