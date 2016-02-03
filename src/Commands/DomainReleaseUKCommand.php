@@ -2,7 +2,7 @@
 
 use SynergyWholesale\Types\UkDomain;
 
-class DomainReleaseUkCommand implements Command
+class DomainReleaseUKCommand implements Command
 {
 	/** @var \SynergyWholesale\Types\UkDomain */
 	protected $domain;

@@ -7,7 +7,7 @@ use SynergyWholesale\Types\UsAppPurpose;
 use SynergyWholesale\Types\UsNexusCategory;
 use SynergyWholesale\Types\RegistrationYears;
 
-class DomainRegisterUsCommand implements Command
+class DomainRegisterUSCommand implements Command
 {
 	/** @var \SynergyWholesale\Types\UsDomain */
 	protected $domainName;

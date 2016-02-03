@@ -6,7 +6,7 @@ class DomainTransferUkCommandTest extends \PHPUnit_Framework_TestCase
 {
 	public function testCommand()
 	{
-		$command = new DomainTransferUkCommand(new UkDomain('example.uk'));
+		$command = new DomainTransferUKCommand(new UkDomain('example.uk'));
 		$build = $command->getRequestData();
 
 		$this->assertTrue(is_array($build));

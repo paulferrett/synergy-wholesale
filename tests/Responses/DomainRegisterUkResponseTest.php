@@ -11,7 +11,7 @@ class DomainRegisterUkResponseTest extends \PHPUnit_Framework_TestCase
 
 		$this->setExpectedException('SynergyWholesale\Exception\BadDataException', 'Expected property [costPrice] missing from response data');
 
-		new DomainRegisterUkResponse($data, 'DomainRegisterUkCommand');
+		new DomainRegisterUkResponse($data, 'DomainRegisterUKCommand');
 	}
 
 	public function testBadCostPrice()
@@ -22,7 +22,7 @@ class DomainRegisterUkResponseTest extends \PHPUnit_Framework_TestCase
 
 		$this->setExpectedException('SynergyWholesale\Exception\BadDataException', 'Expected a numeric cost price');
 
-		new DomainRegisterUkResponse($data, 'DomainRegisterUkCommand');
+		new DomainRegisterUkResponse($data, 'DomainRegisterUKCommand');
 	}
 
 	public function testResponse()
@@ -31,7 +31,7 @@ class DomainRegisterUkResponseTest extends \PHPUnit_Framework_TestCase
 		$data->status = "OK";
 		$data->costPrice = "10.00";
 
-		$response = new DomainRegisterUkResponse($data, 'DomainRegisterUkCommand');
+		$response = new DomainRegisterUkResponse($data, 'DomainRegisterUKCommand');
 		$this->assertEquals('10.00', $response->getCostPrice());
 	}
 }

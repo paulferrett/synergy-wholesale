@@ -11,7 +11,7 @@ class DomainRegisterAuResponseTest extends \PHPUnit_Framework_TestCase
 
 		$this->setExpectedException('SynergyWholesale\Exception\BadDataException', 'Expected property [costPrice] missing from response data');
 
-		new DomainRegisterAuResponse($data, 'DomainRegisterAuCommand');
+		new DomainRegisterAuResponse($data, 'DomainRegisterAUCommand');
 	}
 
 	public function testBadCostPrice()
@@ -22,7 +22,7 @@ class DomainRegisterAuResponseTest extends \PHPUnit_Framework_TestCase
 
 		$this->setExpectedException('SynergyWholesale\Exception\BadDataException', 'Expected a numeric cost price');
 
-		new DomainRegisterAuResponse($data, 'DomainRegisterAuCommand');
+		new DomainRegisterAuResponse($data, 'DomainRegisterAUCommand');
 	}
 
 	public function testResponse()
@@ -31,7 +31,7 @@ class DomainRegisterAuResponseTest extends \PHPUnit_Framework_TestCase
 		$data->status = "OK";
 		$data->costPrice = "10.00";
 
-		$response = new DomainRegisterAuResponse($data, 'DomainRegisterAuCommand');
+		$response = new DomainRegisterAuResponse($data, 'DomainRegisterAUCommand');
 		$this->assertEquals('10.00', $response->getCostPrice());
 	}
 }

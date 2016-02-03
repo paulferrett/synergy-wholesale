@@ -2,7 +2,7 @@
 
 use SynergyWholesale\Types\UkDomain;
 
-class DomainTransferUkCommand implements Command
+class DomainTransferUKCommand implements Command
 {
 	/** @var \SynergyWholesale\Types\UkDomain */
 	protected $domain;

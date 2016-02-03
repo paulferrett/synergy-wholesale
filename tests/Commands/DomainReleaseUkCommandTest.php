@@ -6,7 +6,7 @@ class DomainReleaseUkCommandTest extends \PHPUnit_Framework_TestCase
 {
 	public function testCommand()
 	{
-		$command = new DomainReleaseUkCommand(new UkDomain('example.uk'), 'foo');
+		$command = new DomainReleaseUKCommand(new UkDomain('example.uk'), 'foo');
 		$build = $command->getRequestData();
 
 		$this->assertTrue(is_array($build));

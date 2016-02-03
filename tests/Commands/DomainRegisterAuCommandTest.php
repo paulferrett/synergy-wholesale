@@ -1,4 +1,4 @@
-<?php  namespace SynergyWholesale\Commands; 
+<?php  namespace SynergyWholesale\Commands;
 
 use SynergyWholesale\Types\Email;
 use SynergyWholesale\Types\Phone;
@@ -57,7 +57,7 @@ class DomainRegisterAuCommandTest extends \PHPUnit_Framework_TestCase
 
 	public function testCommand()
 	{
-		$command = new DomainRegisterAuCommand(
+		$command = new DomainRegisterAUCommand(
 			$this->domain,
 			$this->years,
 			$this->nameServers,

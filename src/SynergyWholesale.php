@@ -228,10 +228,10 @@ class SynergyWholesale
 	public function domainInfo(Commands\DomainInfoCommand $command) { return $this->execute($command); }
 
 	/**
-	 * @param Commands\DomainRegisterAuCommand $command
+	 * @param Commands\DomainRegisterAUCommand $command
 	 * @return Responses\DomainRegisterAuResponse
 	 */
-	public function domainRegisterAu(Commands\DomainRegisterAuCommand $command) { return $this->execute($command); }
+	public function domainRegisterAu(Commands\DomainRegisterAUCommand $command) { return $this->execute($command); }
 
 	/**
 	 * @param Commands\DomainRegisterCommand $command
@@ -240,29 +240,29 @@ class SynergyWholesale
 	public function domainRegister(Commands\DomainRegisterCommand $command) { return $this->execute($command); }
 
 	/**
-	 * @param Commands\DomainRegisterUkCommand $command
+	 * @param Commands\DomainRegisterUKCommand $command
 	 * @return Responses\DomainRegisterUkResponse
 	 */
-	public function domainRegisterUk(Commands\DomainRegisterUkCommand $command) { return $this->execute($command); }
+	public function domainRegisterUk(Commands\DomainRegisterUKCommand $command) { return $this->execute($command); }
 
 	/**
-	 * @param Commands\DomainRegisterUsCommand $command
+	 * @param Commands\DomainRegisterUSCommand $command
 	 * @return Responses\DomainRegisterUsResponse
 	 */
-	public function domainRegisterUs(Commands\DomainRegisterUsCommand $command) { return $this->execute($command); }
+	public function domainRegisterUs(Commands\DomainRegisterUSCommand $command) { return $this->execute($command); }
 
 	/**
-	 * @param Commands\DomainReleaseUkCommand $command
+	 * @param Commands\DomainReleaseUKCommand $command
 	 *
 	 * @return Responses\DomainReleaseUkResponse
 	 */
-	public function domainReleaseUk(Commands\DomainReleaseUkCommand $command) { return $this->execute($command); }
+	public function domainReleaseUk(Commands\DomainReleaseUKCommand $command) { return $this->execute($command); }
 
 	/**
-	 * @param Commands\DomainTransferUkCommand $command
+	 * @param Commands\DomainTransferUKCommand $command
 	 * @return Responses\DomainTransferUkResponse
 	 */
-	public function domainTransferUk(Commands\DomainTransferUkCommand $command) { return $this->execute($command); }
+	public function domainTransferUk(Commands\DomainTransferUKCommand $command) { return $this->execute($command); }
 
 	/**
 	 * @param Commands\EnableAutoRenewalCommand $command

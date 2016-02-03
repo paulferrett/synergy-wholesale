@@ -6,7 +6,7 @@ use SynergyWholesale\Types\DomainList;
 use SynergyWholesale\Types\AuRegistrant;
 use SynergyWholesale\Types\RegistrationYears;
 
-class DomainRegisterAuCommand implements Command
+class DomainRegisterAUCommand implements Command
 {
 	/** @var \SynergyWholesale\Types\AuDomain */
 	protected $domainName;

@@ -1,4 +1,4 @@
-<?php  namespace SynergyWholesale\Commands; 
+<?php  namespace SynergyWholesale\Commands;
 
 use SynergyWholesale\Types\Contact;
 use SynergyWholesale\Types\DomainList;
@@ -6,7 +6,7 @@ use SynergyWholesale\Types\RegistrationYears;
 use SynergyWholesale\Types\UkDomain;
 use SynergyWholesale\Exception\InvalidArgumentException;
 
-class DomainRegisterUkCommand implements Command
+class DomainRegisterUKCommand implements Command
 {
 	/** @var \SynergyWholesale\Types\UkDomain */
 	protected $domainName;

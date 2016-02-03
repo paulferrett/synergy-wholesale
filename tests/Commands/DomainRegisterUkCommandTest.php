@@ -34,7 +34,7 @@ class DomainRegisterUkCommandTest extends \PHPUnit_Framework_TestCase
 
 	public function testCommand()
 	{
-		$command = new DomainRegisterUkCommand(
+		$command = new DomainRegisterUKCommand(
 			$this->domain,
 			$this->years,
 			$this->nameServers,
