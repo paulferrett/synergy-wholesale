@@ -28,7 +28,7 @@ class DomainList
 	}
 
 	/**
-	 * @return SynergyWholesale\Types\Domain[] array of Domain objects representing name servers
+	 * @return Domain[] array of Domain objects representing name servers
 	 */
 	public function getDomainList()
 	{

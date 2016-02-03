@@ -17,10 +17,10 @@ class DomainInfoResponse extends Response
 		'autoRenew', 'icannStatus', 'icannVerificationDateEnd'
 	);
 
-	/** @var  SynergyWholesale\Types\Domain */
+	/** @var Domain */
 	protected $domain;
 
-	/** @var  SynergyWholesale\Types\DomainList */
+	/** @var DomainList */
 	protected $nameServers;
 
 	protected function validateData()
@@ -70,7 +70,7 @@ class DomainInfoResponse extends Response
 	}
 
 	/**
-	 * @return SynergyWholesale\Types\Domain
+	 * @return Domain
 	 */
 	public function getDomain()
 	{
@@ -113,7 +113,7 @@ class DomainInfoResponse extends Response
 	}
 
 	/**
-	 * @return SynergyWholesale\Types\Domain[] array of Domain types
+	 * @return Domain[] array of Domain types
 	 */
 	public function getNameServerList()
 	{

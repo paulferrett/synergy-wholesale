@@ -1,5 +1,6 @@
 <?php  namespace SynergyWholesale\Responses;
 
+use SynergyWholesale\Exception\InvalidArgumentException;
 use SynergyWholesale\Types\Domain;
 use SynergyWholesale\Exception\BadDataException;
 

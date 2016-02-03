@@ -8,16 +8,16 @@ use SynergyWholesale\Exception\BadDataException;
 
 class ListContactsResponse extends Response
 {
-	/** @var SynergyWholesale\Types\Contact */
+	/** @var Contact */
 	protected $registrant;
 
-	/** @var SynergyWholesale\Types\Contact */
+	/** @var Contact */
 	protected $tech;
 
-	/** @var SynergyWholesale\Types\Contact */
+	/** @var Contact */
 	protected $admin;
 
-	/** @var SynergyWholesale\Types\Contact */
+	/** @var Contact */
 	protected $billing;
 
 	protected $expectedFields = array(
@@ -125,12 +125,12 @@ class ListContactsResponse extends Response
 	{
 		return $this->registrant;
 	}
-	
+
 	public function getTech()
 	{
 		return $this->tech;
-	}	
-	
+	}
+
 	public function getAdmin()
 	{
 		return $this->admin;

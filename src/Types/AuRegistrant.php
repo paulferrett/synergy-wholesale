@@ -1,11 +1,13 @@
-<?php  namespace SynergyWholesale\Types; 
+<?php  namespace SynergyWholesale\Types;
 
 use SynergyWholesale\Exception\InvalidArgumentException;
 
 class AuRegistrant
 {
+	/** @var string */
 	private $registrantName;
 
+	/** @var string */
 	private $registrantId;
 
 	/** @var \SynergyWholesale\Types\AuIdType 'ABN', 'ACN', 'NSW BN', etc */
@@ -14,10 +16,10 @@ class AuRegistrant
 	/** @var \SynergyWholesale\Types\AuOrganisationType Charity, Company, Incorporated Association, Registered Business, etc */
 	private $eligibilityType;
 
-	/** @var entityName */
+	/** @var string entityName */
 	private $eligibilityName;
 
-	/** @var ACN number, ABN number, BN number, etc  */
+	/** @var string ACN number, ABN number, BN number, etc  */
 	private $eligibilityId;
 
 	/** @var \SynergyWholesale\Types\AuIdType 'ABN', 'ACN', 'NSW BN', etc */

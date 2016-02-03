@@ -1,5 +1,7 @@
 <?php  namespace SynergyWholesale\Responses;
 
+use SynergyWholesale\Exception\BadDataException;
+
 class BalanceQueryResponse extends Response
 {
 	protected $expectedFields = array('balance');

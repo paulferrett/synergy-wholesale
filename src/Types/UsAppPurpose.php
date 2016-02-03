@@ -66,6 +66,6 @@ class UsAppPurpose
 
 	public static function GOVERNMENTAL()
 	{
-		return new static(SELF::GOVERNMENTAL);
+		return new static(self::GOVERNMENTAL);
 	}
 }

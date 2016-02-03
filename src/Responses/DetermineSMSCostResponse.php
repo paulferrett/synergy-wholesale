@@ -1,4 +1,6 @@
-<?php  namespace SynergyWholesale\Responses; 
+<?php  namespace SynergyWholesale\Responses;
+
+use SynergyWholesale\Exception\BadDataException;
 
 class DetermineSMSCostResponse extends Response
 {

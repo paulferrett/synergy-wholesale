@@ -1,7 +1,6 @@
 <?php namespace SynergyWholesale\Commands;
 
 use SynergyWholesale\Types\AuState;
-use SynergyWholesale\Exception\CommandException;
 
 class BusinessCheckRegistrationCommand implements Command
 {
