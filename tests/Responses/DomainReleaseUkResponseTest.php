@@ -9,7 +9,7 @@ class DomainReleaseUkResponseTest extends \PHPUnit_Framework_TestCase
 		$data = new stdClass;
 		$data->status = "OK";
 
-		$response = new DomainReleaseUkResponse($data, 'DomainReleaseUKCommand');
+		$response = new DomainReleaseUKResponse($data, 'DomainReleaseUKCommand');
 
 		$this->assertTrue($response->updateSuccessful());
 	}

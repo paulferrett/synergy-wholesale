@@ -229,7 +229,7 @@ class SynergyWholesale
 
 	/**
 	 * @param Commands\DomainRegisterAUCommand $command
-	 * @return Responses\DomainRegisterAuResponse
+	 * @return Responses\DomainRegisterAUResponse
 	 */
 	public function domainRegisterAu(Commands\DomainRegisterAUCommand $command) { return $this->execute($command); }
 
@@ -241,26 +241,26 @@ class SynergyWholesale
 
 	/**
 	 * @param Commands\DomainRegisterUKCommand $command
-	 * @return Responses\DomainRegisterUkResponse
+	 * @return Responses\DomainRegisterUKResponse
 	 */
 	public function domainRegisterUk(Commands\DomainRegisterUKCommand $command) { return $this->execute($command); }
 
 	/**
 	 * @param Commands\DomainRegisterUSCommand $command
-	 * @return Responses\DomainRegisterUsResponse
+	 * @return Responses\DomainRegisterUSResponse
 	 */
 	public function domainRegisterUs(Commands\DomainRegisterUSCommand $command) { return $this->execute($command); }
 
 	/**
 	 * @param Commands\DomainReleaseUKCommand $command
 	 *
-	 * @return Responses\DomainReleaseUkResponse
+	 * @return Responses\DomainReleaseUKResponse
 	 */
 	public function domainReleaseUk(Commands\DomainReleaseUKCommand $command) { return $this->execute($command); }
 
 	/**
 	 * @param Commands\DomainTransferUKCommand $command
-	 * @return Responses\DomainTransferUkResponse
+	 * @return Responses\DomainTransferUKResponse
 	 */
 	public function domainTransferUk(Commands\DomainTransferUKCommand $command) { return $this->execute($command); }
 

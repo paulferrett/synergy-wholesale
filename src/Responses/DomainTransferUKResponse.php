@@ -2,7 +2,7 @@
 
 use SynergyWholesale\Exception\BadDataException;
 
-class DomainTransferUkResponse extends Response
+class DomainTransferUKResponse extends Response
 {
     protected $expectedFields = array('statusCode', 'reason');
 

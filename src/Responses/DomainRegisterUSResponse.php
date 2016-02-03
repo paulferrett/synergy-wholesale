@@ -2,7 +2,7 @@
 
 use SynergyWholesale\Exception\BadDataException;
 
-class DomainRegisterUkResponse extends Response
+class DomainRegisterUSResponse extends Response
 {
 	protected $expectedFields = array('costPrice');
 

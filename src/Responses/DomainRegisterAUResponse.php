@@ -1,8 +1,8 @@
-<?php  namespace SynergyWholesale\Responses; 
+<?php  namespace SynergyWholesale\Responses;
 
 use SynergyWholesale\Exception\BadDataException;
 
-class DomainRegisterAuResponse extends Response
+class DomainRegisterAUResponse extends Response
 {
 	protected $expectedFields = array('costPrice');
 

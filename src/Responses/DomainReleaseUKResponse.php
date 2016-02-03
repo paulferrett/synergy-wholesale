@@ -1,6 +1,6 @@
 <?php  namespace SynergyWholesale\Responses;
 
-class DomainReleaseUkResponse extends Response
+class DomainReleaseUKResponse extends Response
 {
 	public function updateSuccessful()
 	{
